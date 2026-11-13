@@ -1,13 +1,40 @@
-export default function HomePage() {
+import { Hero } from "@/components/sections/Hero";
+import { TrustStrip } from "@/components/sections/TrustStrip";
+import { ServicesSection } from "@/components/sections/ServicesSection";
+import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
+import { ProcessSection } from "@/components/sections/ProcessSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { AreasSection } from "@/components/sections/AreasSection";
+import { BlogTeaser } from "@/components/sections/BlogTeaser";
+import { EstimateCta } from "@/components/sections/EstimateCta";
+import { getHomepageData } from "@/lib/homepage-data";
+
+export default async function HomePage() {
+  const {
+    settings,
+    headline,
+    services,
+    featuredProjects,
+    testimonials,
+    areas,
+    posts,
+  } = await getHomepageData();
+
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-      <h1 className="font-display text-4xl text-[var(--color-cream)]">
-        Norris Construction
-      </h1>
-      <p className="mt-4 max-w-xl text-[var(--color-cream)]/80">
-        Luxury custom homes and residential remodeling across Miami and South
-        Florida. Full site content coming in the next task.
-      </p>
-    </div>
+    <>
+      <Hero headline={headline} phone={settings.phone} sms={settings.sms} />
+      <TrustStrip
+        licenseText={settings.licenseText}
+        insuranceText={settings.insuranceText}
+        yearsInBusiness={settings.yearsInBusiness}
+      />
+      <ServicesSection services={services} />
+      <FeaturedProjects projects={featuredProjects} />
+      <ProcessSection />
+      <TestimonialsSection testimonials={testimonials} />
+      <AreasSection areas={areas} />
+      <BlogTeaser posts={posts} />
+      <EstimateCta />
+    </>
   );
 }
