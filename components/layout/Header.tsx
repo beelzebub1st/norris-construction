@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MobileNav } from "@/components/layout/MobileNav";
 import { telHref, smsHref } from "@/lib/site-settings";
 
 const navLinks = [
@@ -61,12 +62,15 @@ export function Header({ phone, sms }: HeaderProps) {
           </Link>
         </div>
 
-        <a
-          href={telHref(phone)}
-          className="rounded-full bg-[var(--color-orange)] px-4 py-2 text-sm font-semibold text-white md:hidden"
-        >
-          Call
-        </a>
+        <div className="flex items-center gap-2 md:hidden">
+          <MobileNav />
+          <a
+            href={telHref(phone)}
+            className="rounded-full bg-[var(--color-orange)] px-4 py-2 text-sm font-semibold text-white"
+          >
+            Call
+          </a>
+        </div>
       </div>
     </header>
   );
