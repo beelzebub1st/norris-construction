@@ -6,3 +6,192 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum ProjectType {
+  custom_home
+  remodel
+  kitchen
+  bath
+  addition
+  outdoor
+}
+
+enum BudgetRange {
+  under_50k
+  s50_150k @map("50_150k")
+  s150_500k @map("150_500k")
+  s500k_plus @map("500k_plus")
+  not_sure
+}
+
+enum LeadStatus {
+  new
+  contacted
+  qualified
+  quoted
+  won
+  lost
+}
+
+enum PostStatus {
+  draft
+  published
+}
+
+enum EmailStatus {
+  pending
+  sent
+  failed
+}
+
+model Project {
+  id             String        @id @default(cuid())
+  title          String
+  slug           String        @unique
+  type           ProjectType
+  areaSlug       String
+  summary        String
+  body           String        @db.Text
+  gallery        String[]
+  beforeAfter    Json?
+  featured       Boolean       @default(false)
+  seoTitle       String?
+  seoDescription String?
+  publishedAt    DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  testimonials   Testimonial[]
+}
+
+model Service {
+  id                String   @id @default(cuid())
+  title             String
+  slug              String   @unique
+  heroImage         String?
+  summary           String
+  body              String   @db.Text
+  faqs              Json
+  relatedProjectIds String[]
+  seoTitle          String?
+  seoDescription    String?
+  sortOrder         Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Area {
+  id                 String   @id @default(cuid())
+  name               String
+  slug               String   @unique
+  headline           String
+  body               String   @db.Text
+  nearbyServiceSlugs String[]
+  seoTitle           String?
+  seoDescription     String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Post {
+  id             String     @id @default(cuid())
+  title          String
+  slug           String     @unique
+  cover          String?
+  body           String     @db.Text
+  status         PostStatus @default(draft)
+  seoTitle       String?
+  seoDescription String?
+  publishedAt    DateTime?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  quote     String   @db.Text
+  rating    Int      @default(5)
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id])
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteSettings {
+  id              String  @id @default("singleton")
+  phone           String  @default("(305) 555-0100")
+  sms             String  @default("+13055550100")
+  email           String  @default("hello@norris.construction")
+  address         String  @default("Miami, FL")
+  licenseText     String  @default("License # — coming soon")
+  insuranceText   String  @default("Fully insured — details coming soon")
+  yearsInBusiness String  @default("Years of craftsmanship")
+  socials         Json    @default("{}")
+  chatEmbedHtml   String? @db.Text
+  chatEnabled     Boolean @default(false)
+  nurtureEnabled  Boolean @default(false)
+}
+
+model Lead {
+  id          String       @id @default(cuid())
+  name        String
+  phone       String
+  email       String
+  projectType ProjectType?
+  area        String?
+  budgetRange BudgetRange?
+  message     String       @db.Text
+  source      String?
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  pageUrl     String?
+  status      LeadStatus   @default(new)
+  notes       LeadNote[]
+  emails      EmailLog[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model LeadNote {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  body      String   @db.Text
+  createdAt DateTime @default(now())
+}
+
+model Submission {
+  id        String   @id @default(cuid())
+  leadId    String?
+  payload   Json
+  ip        String?
+  createdAt DateTime @default(now())
+}
+
+model VisitorEvent {
+  id        String   @id @default(cuid())
+  path      String
+  referrer  String?
+  userAgent String?
+  createdAt DateTime @default(now())
+}
+
+model Experiment {
+  id       String  @id @default(cuid())
+  key      String  @unique
+  variants Json
+  active   Boolean @default(false)
+}
+
+model EmailLog {
+  id        String      @id @default(cuid())
+  leadId    String?
+  lead      Lead?       @relation(fields: [leadId], references: [id])
+  template  String
+  to        String
+  status    EmailStatus
+  error     String?
+  createdAt DateTime    @default(now())
+}
