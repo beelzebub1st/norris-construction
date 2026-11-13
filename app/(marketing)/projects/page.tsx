@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { ProjectFilters } from "@/components/projects/ProjectFilters";
 import { Reveal } from "@/components/motion/Reveal";
 import { listAreas, listProjects } from "@/lib/content";
+import { projectTypeEnum } from "@/lib/leads/validate";
 import { PROJECT_TYPE_LABELS } from "@/lib/project-labels";
 
 export const metadata: Metadata = {
@@ -70,7 +71,9 @@ async function ProjectList({
   areaNames: Record<string, string>;
 }) {
   const { type, area } = await searchParams;
-  const projects = await listProjects({ type, area });
+  const typeFilter =
+    type && projectTypeEnum.safeParse(type).success ? type : undefined;
+  const projects = await listProjects({ type: typeFilter, area });
 
   return (
     <section className="py-14 sm:py-16">
