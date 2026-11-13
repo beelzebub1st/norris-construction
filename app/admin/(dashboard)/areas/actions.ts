@@ -26,7 +26,7 @@ export async function createArea(formData: FormData) {
   await requireAdmin();
   const data = areaFromForm(formData);
   const area = await getPrisma().area.create({ data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/areas/${area.id}/edit`);
 }
 
@@ -34,13 +34,13 @@ export async function updateArea(id: string, formData: FormData) {
   await requireAdmin();
   const data = areaFromForm(formData);
   await getPrisma().area.update({ where: { id }, data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/areas/${id}/edit`);
 }
 
 export async function deleteArea(id: string) {
   await requireAdmin();
   await getPrisma().area.delete({ where: { id } });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect("/admin/areas");
 }

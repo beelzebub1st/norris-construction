@@ -31,7 +31,7 @@ export async function createService(formData: FormData) {
   await requireAdmin();
   const data = serviceFromForm(formData);
   const service = await getPrisma().service.create({ data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/services/${service.id}/edit`);
 }
 
@@ -39,13 +39,13 @@ export async function updateService(id: string, formData: FormData) {
   await requireAdmin();
   const data = serviceFromForm(formData);
   await getPrisma().service.update({ where: { id }, data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/services/${id}/edit`);
 }
 
 export async function deleteService(id: string) {
   await requireAdmin();
   await getPrisma().service.delete({ where: { id } });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect("/admin/services");
 }

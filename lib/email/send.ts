@@ -1,4 +1,4 @@
-import type { Lead } from "@prisma/client";
+import type { Lead, LeadStatus } from "@prisma/client";
 import { getPrisma } from "@/lib/prisma";
 import {
   createResendClient,
@@ -46,10 +46,12 @@ async function sendTemplatedEmail(
   template: EmailTemplateKey,
   to: string,
   siteEmail: string,
+  extra?: { status?: LeadStatus },
 ): Promise<void> {
   const apiKey = getResendApiKey();
   const { subject, html } = renderEmailTemplate(template, lead, {
     siteEmail,
+    status: extra?.status,
   });
 
   if (!apiKey) {
@@ -119,4 +121,9 @@ export async function sendNurture(
   }
   const siteEmail = await getSiteEmail();
   await sendTemplatedEmail(lead, templateKey, lead.email, siteEmail);
+}
+
+export async function sendStatusEmail(lead: Lead, status: LeadStatus): Promise<void> {
+  const siteEmail = await getSiteEmail();
+  await sendTemplatedEmail(lead, "status_update", lead.email, siteEmail, { status });
 }

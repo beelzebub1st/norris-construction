@@ -1,16 +1,19 @@
-import type { Lead } from "@prisma/client";
+import type { Lead, LeadStatus } from "@prisma/client";
+import { LEAD_STATUS_LABELS } from "@/lib/leads/status-labels";
 
 export const EMAIL_TEMPLATE_KEYS = [
   "lead_confirmation",
   "lead_notify",
   "nurture_day2",
   "nurture_day5",
+  "status_update",
 ] as const;
 
 export type EmailTemplateKey = (typeof EMAIL_TEMPLATE_KEYS)[number];
 
 export type TemplateContext = {
   siteEmail: string;
+  status?: LeadStatus;
 };
 
 function escapeHtml(value: string) {
@@ -80,6 +83,18 @@ ${leadField("Page", lead.pageUrl ?? undefined)}
 <p>It has been a few days since you reached out. When you are ready, we can walk through timelines, budget ranges, and how we approach Miami-area projects.</p>
 <p>Email <a href="mailto:${escapeHtml(ctx.siteEmail)}">${escapeHtml(ctx.siteEmail)}</a> whenever it works for you.</p>`,
       };
+    case "status_update": {
+      const statusLabel = ctx.status
+        ? LEAD_STATUS_LABELS[ctx.status]
+        : "updated";
+      return {
+        subject: `Update on your Norris Construction inquiry (${statusLabel})`,
+        html: `<p>Hi ${name},</p>
+<p>Your project inquiry status is now <strong>${escapeHtml(statusLabel)}</strong>. Our team will keep you posted on next steps.</p>
+<p>Questions? Email <a href="mailto:${escapeHtml(ctx.siteEmail)}">${escapeHtml(ctx.siteEmail)}</a>.</p>
+<p>— Norris Construction</p>`,
+      };
+    }
     default: {
       const _exhaustive: never = key;
       return _exhaustive;

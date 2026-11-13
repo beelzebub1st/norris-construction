@@ -41,7 +41,7 @@ export async function createProject(formData: FormData) {
   await requireAdmin();
   const data = projectFromForm(formData);
   const project = await getPrisma().project.create({ data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/projects/${project.id}/edit`);
 }
 
@@ -49,13 +49,13 @@ export async function updateProject(id: string, formData: FormData) {
   await requireAdmin();
   const data = projectFromForm(formData);
   await getPrisma().project.update({ where: { id }, data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/projects/${id}/edit`);
 }
 
 export async function deleteProject(id: string) {
   await requireAdmin();
   await getPrisma().project.delete({ where: { id } });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect("/admin/projects");
 }

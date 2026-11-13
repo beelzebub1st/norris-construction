@@ -29,7 +29,7 @@ export async function createPost(formData: FormData) {
   await requireAdmin();
   const data = postFromForm(formData);
   const post = await getPrisma().post.create({ data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/blog/${post.id}/edit`);
 }
 
@@ -37,13 +37,13 @@ export async function updatePost(id: string, formData: FormData) {
   await requireAdmin();
   const data = postFromForm(formData);
   await getPrisma().post.update({ where: { id }, data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/blog/${id}/edit`);
 }
 
 export async function deletePost(id: string) {
   await requireAdmin();
   await getPrisma().post.delete({ where: { id } });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect("/admin/blog");
 }

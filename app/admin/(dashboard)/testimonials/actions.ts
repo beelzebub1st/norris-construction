@@ -25,7 +25,7 @@ export async function createTestimonial(formData: FormData) {
   await requireAdmin();
   const data = testimonialFromForm(formData);
   const testimonial = await getPrisma().testimonial.create({ data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/testimonials/${testimonial.id}/edit`);
 }
 
@@ -33,13 +33,13 @@ export async function updateTestimonial(id: string, formData: FormData) {
   await requireAdmin();
   const data = testimonialFromForm(formData);
   await getPrisma().testimonial.update({ where: { id }, data });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect(`/admin/testimonials/${id}/edit`);
 }
 
 export async function deleteTestimonial(id: string) {
   await requireAdmin();
   await getPrisma().testimonial.delete({ where: { id } });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect("/admin/testimonials");
 }

@@ -32,6 +32,6 @@ export async function saveSiteSettings(formData: FormData) {
     create: { id: "singleton", ...data },
     update: data,
   });
-  revalidatePublicContent();
+  await revalidatePublicContent();
   redirect("/admin/settings");
 }
