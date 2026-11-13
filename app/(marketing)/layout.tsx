@@ -1,6 +1,9 @@
+import { Suspense } from "react";
+import { ChatWidget } from "@/components/ChatWidget";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { StickyCallBar } from "@/components/layout/StickyCallBar";
+import { VisitorTracker } from "@/components/VisitorTracker";
 import { getSiteSettings } from "@/lib/site-settings";
 
 export default async function MarketingLayout({
@@ -22,6 +25,10 @@ export default async function MarketingLayout({
         insuranceText={settings.insuranceText}
       />
       <StickyCallBar phone={settings.phone} sms={settings.sms} />
+      <Suspense fallback={null}>
+        <VisitorTracker />
+      </Suspense>
+      <ChatWidget enabled={settings.chatEnabled} html={settings.chatEmbedHtml} />
     </>
   );
 }

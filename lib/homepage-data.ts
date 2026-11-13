@@ -1,3 +1,7 @@
+import {
+  headlineForExperiment,
+  resolveExperiment,
+} from "@/lib/experiments/resolve";
 import { getPrisma } from "@/lib/prisma";
 import { getSiteSettings } from "@/lib/site-settings";
 import { PostStatus } from "@prisma/client";
@@ -5,15 +9,7 @@ import { PostStatus } from "@prisma/client";
 export const DEFAULT_HEADLINE =
   "Miami luxury builds & remodels, done right.";
 
-function resolveHeroHeadline(
-  experiment: { active: boolean; variants: unknown } | null,
-): string {
-  if (!experiment?.active) return DEFAULT_HEADLINE;
-  const variants = experiment.variants as Record<string, string> | null;
-  return variants?.a ?? DEFAULT_HEADLINE;
-}
-
-export async function getHomepageData() {
+export async function getHomepageData(visitorId?: string | null) {
   "use cache";
 
   const prisma = getPrisma();
@@ -64,9 +60,15 @@ export async function getHomepageData() {
     image: project.gallery[0] ?? "/images/placeholders/hero.jpg",
   }));
 
+  const variantKey =
+    visitorId != null && visitorId !== ""
+      ? resolveExperiment("hero_headline", visitorId, experiment)
+      : null;
+  const headline = headlineForExperiment(experiment, variantKey, DEFAULT_HEADLINE);
+
   return {
     settings,
-    headline: resolveHeroHeadline(experiment),
+    headline,
     services,
     featuredProjects,
     testimonials,
