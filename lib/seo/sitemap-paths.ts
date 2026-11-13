@@ -3,7 +3,9 @@ export function siteUrl() {
     process.env.SITE_URL ??
     process.env.NEXT_PUBLIC_SITE_URL ??
     "http://localhost:3020"
-  ).replace(/\/$/, "");
+  )
+    .trim()
+    .replace(/\/$/, "");
 }
 
 export type SitemapSlugs = {
