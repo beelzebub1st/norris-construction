@@ -21,29 +21,33 @@ export async function createLeadFromEstimate(
   }
 
   const prisma = getPrisma();
-  const lead = await prisma.lead.create({
-    data: {
-      name: input.name,
-      phone: input.phone,
-      email: input.email,
-      message: input.message,
-      projectType: input.projectType as ProjectType | undefined,
-      area: input.area,
-      budgetRange: mapBudgetToPrisma(input.budgetRange),
-      source: input.source,
-      utmSource: input.utmSource,
-      utmMedium: input.utmMedium,
-      utmCampaign: input.utmCampaign,
-      pageUrl: input.pageUrl,
-    },
-  });
+  const lead = await prisma.$transaction(async (tx) => {
+    const created = await tx.lead.create({
+      data: {
+        name: input.name,
+        phone: input.phone,
+        email: input.email,
+        message: input.message,
+        projectType: input.projectType as ProjectType | undefined,
+        area: input.area,
+        budgetRange: mapBudgetToPrisma(input.budgetRange),
+        source: input.source,
+        utmSource: input.utmSource,
+        utmMedium: input.utmMedium,
+        utmCampaign: input.utmCampaign,
+        pageUrl: input.pageUrl,
+      },
+    });
 
-  await prisma.submission.create({
-    data: {
-      leadId: lead.id,
-      payload: input,
-      ip: ctx.ip,
-    },
+    await tx.submission.create({
+      data: {
+        leadId: created.id,
+        payload: input,
+        ip: ctx.ip,
+      },
+    });
+
+    return created;
   });
 
   try {

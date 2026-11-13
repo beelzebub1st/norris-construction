@@ -5,8 +5,14 @@ const submissionCreate = vi.fn();
 
 vi.mock("@/lib/prisma", () => ({
   getPrisma: () => ({
-    lead: { create: leadCreate },
-    submission: { create: submissionCreate },
+    $transaction: (fn: (tx: {
+      lead: { create: typeof leadCreate };
+      submission: { create: typeof submissionCreate };
+    }) => unknown) =>
+      fn({
+        lead: { create: leadCreate },
+        submission: { create: submissionCreate },
+      }),
   }),
 }));
 
