@@ -3,9 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Docker image uses standalone; Vercel should use the default output.
   ...(process.env.DOCKER === "1" ? { output: "standalone" as const } : {}),
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // Next 16 dropped next.config eslint; types are still skippable here.
   typescript: {
     ignoreBuildErrors: true,
   },
