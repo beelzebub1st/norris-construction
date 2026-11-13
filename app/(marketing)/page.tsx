@@ -1,5 +1,9 @@
-import { cookies } from "next/headers";
-import { Hero } from "@/components/sections/Hero";
+import { Suspense } from "react";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  HeroExperiment,
+  HeroExperimentFallback,
+} from "@/components/sections/HeroExperiment";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
@@ -9,24 +13,28 @@ import { AreasSection } from "@/components/sections/AreasSection";
 import { BlogTeaser } from "@/components/sections/BlogTeaser";
 import { EstimateCta } from "@/components/sections/EstimateCta";
 import { getHomepageData } from "@/lib/homepage-data";
+import { localBusinessJsonLd } from "@/lib/seo/json-ld-data";
 
 export default async function HomePage() {
-  const cookieStore = await cookies();
-  const visitorId = cookieStore.get("nid")?.value ?? null;
-
   const {
     settings,
-    headline,
     services,
     featuredProjects,
     testimonials,
     areas,
     posts,
-  } = await getHomepageData(visitorId);
+  } = await getHomepageData();
 
   return (
     <>
-      <Hero headline={headline} phone={settings.phone} sms={settings.sms} />
+      <JsonLd data={localBusinessJsonLd(settings)} />
+      <Suspense
+        fallback={
+          <HeroExperimentFallback phone={settings.phone} sms={settings.sms} />
+        }
+      >
+        <HeroExperiment />
+      </Suspense>
       <TrustStrip
         licenseText={settings.licenseText}
         insuranceText={settings.insuranceText}

@@ -1,4 +1,4 @@
-import { LeadStatus } from "@prisma/client";
+import { EmailStatus, LeadStatus } from "@prisma/client";
 import { nurtureDue } from "@/lib/email/nurture";
 import { sendNurture } from "@/lib/email/send";
 import { getPrisma } from "@/lib/prisma";
@@ -26,6 +26,7 @@ async function runNurtureCron() {
       emails: {
         where: {
           template: { in: ["nurture_day2", "nurture_day5"] },
+          status: EmailStatus.sent,
         },
         select: { template: true },
       },

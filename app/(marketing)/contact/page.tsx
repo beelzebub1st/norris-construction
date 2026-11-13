@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Reveal } from "@/components/motion/Reveal";
+import { localBusinessJsonLd } from "@/lib/seo/json-ld-data";
 import { getSiteSettings, telHref, smsHref } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
@@ -14,6 +16,7 @@ export default async function ContactPage() {
 
   return (
     <>
+      <JsonLd data={localBusinessJsonLd(settings)} />
       <section className="border-b border-[var(--color-stone)]/15 py-14 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h1 className="font-display text-4xl text-[var(--color-cream)] sm:text-5xl">

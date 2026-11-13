@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { BeforeAfter } from "@/components/projects/BeforeAfter";
 import { ProjectGallery } from "@/components/projects/ProjectGallery";
 import { Reveal } from "@/components/motion/Reveal";
@@ -13,6 +14,8 @@ import {
   parseBeforeAfter,
 } from "@/lib/content";
 import { PROJECT_TYPE_LABELS } from "@/lib/project-labels";
+import { projectJsonLd } from "@/lib/seo/json-ld-data";
+import { siteUrl } from "@/lib/seo/sitemap-paths";
 
 export const instant = false;
 
@@ -45,8 +48,11 @@ async function ProjectDetailContent({ slug }: { slug: string }) {
   const area = await getAreaBySlug(project.areaSlug);
   const beforeAfter = parseBeforeAfter(project.beforeAfter);
 
+  const pageUrl = `${siteUrl()}/projects/${project.slug}`;
+
   return (
     <>
+      <JsonLd data={projectJsonLd(project, pageUrl)} />
       <section className="border-b border-[var(--color-stone)]/15 py-14 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs uppercase tracking-wide text-[var(--color-cream)]/55">
