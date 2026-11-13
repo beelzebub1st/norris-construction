@@ -1,7 +1,26 @@
 import { verifyAdminPassword } from "@/lib/auth/password";
 import { getSession } from "@/lib/auth/session";
+import { rateLimit } from "@/lib/rate-limit";
+
+function clientIp(request: Request): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (forwarded) {
+    const first = forwarded.split(",")[0]?.trim();
+    if (first) return first;
+  }
+  return request.headers.get("x-real-ip") ?? "unknown";
+}
 
 export async function POST(request: Request) {
+  const ip = clientIp(request);
+  const limited = rateLimit(`admin-login:${ip}`);
+  if (!limited.ok) {
+    return Response.json(
+      { ok: false, error: "Too many login attempts. Try again in a minute." },
+      { status: 429 },
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();

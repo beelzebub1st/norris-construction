@@ -3,6 +3,8 @@ import { AdminLogoutButton } from "@/components/admin/AdminLogoutButton";
 import { ADMIN_NAV } from "@/components/admin/admin-nav";
 import { requireAdmin } from "@/lib/auth/session";
 
+export const instant = false;
+
 export default async function AdminDashboardLayout({
   children,
 }: {
