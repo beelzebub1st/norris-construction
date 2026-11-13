@@ -1,4 +1,7 @@
-import { smsHref, telHref } from "@/lib/site-settings";
+"use client";
+
+import { useConversion } from "@/components/conversion/ConversionProvider";
+import { telHref, smsHref } from "@/lib/phone-links";
 
 type StickyCallBarProps = {
   phone: string;
@@ -6,25 +9,30 @@ type StickyCallBarProps = {
 };
 
 export function StickyCallBar({ phone, sms }: StickyCallBarProps) {
+  const { openQuiz } = useConversion();
+
   return (
-    <div
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-[var(--color-stone)]/30 bg-[var(--color-ink)] pb-[env(safe-area-inset-bottom)] md:hidden"
-      role="region"
-      aria-label="Quick contact"
-    >
-      <div className="grid grid-cols-2 gap-px bg-[var(--color-stone)]/30">
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--color-stone)]/20 bg-[var(--color-ink)]/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden">
+      <div className="grid grid-cols-3">
         <a
           href={telHref(phone)}
-          className="flex items-center justify-center bg-[var(--color-orange)] py-3.5 text-center text-sm font-semibold text-white"
+          className="px-2 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-[var(--color-cream)]"
         >
           Call
         </a>
         <a
           href={smsHref(sms)}
-          className="flex items-center justify-center bg-[var(--color-ink)] py-3.5 text-center text-sm font-semibold text-[var(--color-cream)]"
+          className="border-x border-[var(--color-stone)]/20 px-2 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-[var(--color-cream)]"
         >
           Text
         </a>
+        <button
+          type="button"
+          onClick={openQuiz}
+          className="bg-[var(--color-orange)] px-2 py-3.5 text-center text-xs font-bold uppercase tracking-wide text-white"
+        >
+          Quote quiz
+        </button>
       </div>
     </div>
   );

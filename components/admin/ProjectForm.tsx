@@ -5,6 +5,10 @@ import {
   SubmitButton,
   inputClass,
 } from "@/components/admin/admin-chrome";
+import {
+  SeoDescriptionInput,
+  SeoTitleInput,
+} from "@/components/admin/SeoFieldHints";
 import { arrayToLines, toDatetimeLocalValue } from "@/lib/admin/form";
 import { PROJECT_TYPE_FILTER_OPTIONS } from "@/lib/project-labels";
 
@@ -107,17 +111,21 @@ export function ProjectForm({ action, project, submitLabel = "Save" }: ProjectFo
           />
         </Field>
       </div>
-      <Field label="SEO title">
-        <input name="seoTitle" defaultValue={project?.seoTitle ?? ""} className={inputClass} />
-      </Field>
-      <Field label="SEO description">
-        <textarea
-          name="seoDescription"
-          rows={2}
-          defaultValue={project?.seoDescription ?? ""}
-          className={inputClass}
-        />
-      </Field>
+      <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 space-y-4">
+        <p className="text-sm font-medium text-zinc-200">SEO</p>
+        <Field label="SEO title">
+          <SeoTitleInput
+            defaultValue={project?.seoTitle ?? ""}
+            className={inputClass}
+          />
+        </Field>
+        <Field label="SEO description">
+          <SeoDescriptionInput
+            defaultValue={project?.seoDescription ?? ""}
+            className={inputClass}
+          />
+        </Field>
+      </div>
       <FormActions>
         <SubmitButton label={submitLabel} />
       </FormActions>

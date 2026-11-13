@@ -1,49 +1,88 @@
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
+import { SafeImage } from "@/components/ui/SafeImage";
 
 export type ServiceListItem = {
   title: string;
   slug: string;
   summary: string;
+  heroImage?: string | null;
 };
 
 type ServicesSectionProps = {
   services: ServiceListItem[];
 };
 
+const FALLBACK: Record<string, string> = {
+  "custom-homes": "/images/services/custom-homes.jpg",
+  renovations: "/images/services/renovations.jpg",
+  kitchens: "/images/services/kitchens.jpg",
+  bathrooms: "/images/services/bathrooms.jpg",
+  additions: "/images/services/additions.jpg",
+  "outdoor-living": "/images/services/outdoor-living.jpg",
+};
+
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
-    <section className="bg-[var(--color-ink)] py-16 sm:py-20">
+    <section className="section-pad bg-[var(--color-ink)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <h2 className="font-display text-3xl text-[var(--color-cream)] sm:text-4xl">
-            What we build
-          </h2>
-          <p className="mt-3 max-w-2xl text-[var(--color-cream)]/75">
-            Full-service residential construction — from ground-up estates to
-            kitchens, baths, and outdoor living.
-          </p>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-orange)]">
+                Services
+              </p>
+              <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
+                Built for how Miami lives
+              </h2>
+              <p className="mt-3 text-[var(--color-cream)]/75">
+                From ground-up estates to kitchens, baths, additions, and outdoor living — one
+                accountable team from first sketch to final walkthrough.
+              </p>
+            </div>
+            <Link href="/services" className="btn-ghost w-fit">
+              All services
+            </Link>
+          </div>
         </Reveal>
 
-        <ul className="mt-12 divide-y divide-[var(--color-stone)]/20 border-y border-[var(--color-stone)]/20">
-          {services.map((service) => (
-            <li key={service.slug}>
-              <Reveal>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => {
+            const src =
+              service.heroImage ||
+              FALLBACK[service.slug] ||
+              "/images/services/custom-homes.jpg";
+            return (
+              <Reveal key={service.slug}>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group flex flex-col gap-2 py-6 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+                  className="group relative block min-h-[300px] overflow-hidden rounded-[1.5rem]"
                 >
-                  <span className="font-display text-xl text-[var(--color-cream)] group-hover:text-[var(--color-cream)]">
-                    {service.title}
-                  </span>
-                  <span className="max-w-md text-sm text-[var(--color-cream)]/70">
-                    {service.summary}
-                  </span>
+                  <SafeImage
+                    src={src}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    fallbackSrc="/images/services/custom-homes.jpg"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6">
+                    <h3 className="font-display text-2xl text-white">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-white/78">
+                      {service.summary}
+                    </p>
+                    <span className="mt-4 inline-flex text-sm font-semibold text-[var(--color-orange)]">
+                      Explore →
+                    </span>
+                  </div>
                 </Link>
               </Reveal>
-            </li>
-          ))}
-        </ul>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

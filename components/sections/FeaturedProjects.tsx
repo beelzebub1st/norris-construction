@@ -11,34 +11,47 @@ type FeaturedProjectsProps = {
 
 export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   return (
-    <section className="border-t border-[var(--color-stone)]/15 bg-[var(--color-ink)] py-16 sm:py-20">
+    <section className="section-pad border-t border-[var(--color-stone)]/15 bg-[var(--color-ink-soft)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="font-display text-3xl text-[var(--color-cream)] sm:text-4xl">
-                Featured work
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-orange)]">
+                Portfolio
+              </p>
+              <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
+                Recent work across Miami & Broward
               </h2>
-              <p className="mt-3 max-w-xl text-[var(--color-cream)]/75">
-                Recent remodels and custom builds across South Florida.
+              <p className="mt-3 text-[var(--color-cream)]/75">
+                Kitchens that cook hard, baths that hold waterproofing, outdoor rooms built for
+                year-round hosting — real homes, not mood boards.
               </p>
             </div>
-            <Link
-              href="/projects"
-              className="text-sm font-medium text-[var(--color-cream)]/80 underline-offset-4 hover:underline"
-            >
+            <Link href="/projects" className="btn-ghost w-fit">
               View all projects
             </Link>
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-10 sm:grid-cols-2">
-          {projects.map((project) => (
-            <Reveal key={project.slug}>
-              <FeaturedProjectCard project={project} />
-            </Reveal>
-          ))}
-        </div>
+        {projects.length === 0 ? (
+          <p className="mt-10 text-sm text-[var(--color-cream)]/55">
+            Featured projects are loading — visit the full portfolio meanwhile.
+          </p>
+        ) : (
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            {projects.map((project, index) => (
+              <Reveal
+                key={project.slug}
+                className={index === 0 ? "lg:col-span-2" : undefined}
+              >
+                <FeaturedProjectCard
+                  project={project}
+                  featured={index === 0}
+                />
+              </Reveal>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

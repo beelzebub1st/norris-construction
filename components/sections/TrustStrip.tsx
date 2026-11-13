@@ -1,5 +1,3 @@
-import { Reveal } from "@/components/motion/Reveal";
-
 type TrustStripProps = {
   licenseText: string;
   insuranceText: string;
@@ -11,20 +9,32 @@ export function TrustStrip({
   insuranceText,
   yearsInBusiness,
 }: TrustStripProps) {
+  const items = [
+    yearsInBusiness,
+    licenseText,
+    insuranceText,
+    "Miami & South Florida",
+    "Design-build partners",
+    "On-time craftsmanship",
+    "Free project estimate",
+  ];
+  const loop = [...items, ...items];
+
   return (
-    <section className="border-b border-[var(--color-stone)]/15 bg-[var(--color-ink)]">
-      <Reveal>
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p className="font-display text-lg text-[var(--color-cream)]">
-            Trusted Miami craftsmanship
-          </p>
-          <ul className="flex flex-col gap-2 text-sm text-[var(--color-cream)]/75 sm:flex-row sm:gap-8">
-            <li>{licenseText}</li>
-            <li>{insuranceText}</li>
-            <li>{yearsInBusiness}</li>
-          </ul>
+    <section className="border-y border-[var(--color-stone)]/15 bg-[var(--color-ink-soft)] py-4">
+      <div className="marquee">
+        <div className="marquee-track">
+          {loop.map((item, i) => (
+            <span
+              key={`${item}-${i}`}
+              className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-cream)]/70"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-orange)]" />
+              {item}
+            </span>
+          ))}
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

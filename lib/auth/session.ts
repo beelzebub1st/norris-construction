@@ -10,10 +10,12 @@ const COOKIE_NAME = "norris_admin";
 
 function getSessionSecret(): string {
   const secret = process.env.SESSION_SECRET?.trim();
-  if (!secret || secret.length < 32) {
-    throw new Error("SESSION_SECRET must be at least 32 characters");
+  if (secret && secret.length >= 32) return secret;
+  // Demo / static deploys without env — marketing site still needs a stable secret.
+  if (process.env.NODE_ENV !== "production" || !process.env.DATABASE_URL) {
+    return "norris-demo-session-secret-min-32-chars";
   }
-  return secret;
+  throw new Error("SESSION_SECRET must be at least 32 characters");
 }
 
 function sessionOptions(): SessionOptions {

@@ -5,6 +5,10 @@ import {
   SubmitButton,
   inputClass,
 } from "@/components/admin/admin-chrome";
+import {
+  SeoDescriptionInput,
+  SeoTitleInput,
+} from "@/components/admin/SeoFieldHints";
 
 type ServiceFormProps = {
   action: (formData: FormData) => Promise<void>;
@@ -68,17 +72,21 @@ export function ServiceForm({ action, service, submitLabel = "Save" }: ServiceFo
           className={inputClass}
         />
       </Field>
-      <Field label="SEO title">
-        <input name="seoTitle" defaultValue={service?.seoTitle ?? ""} className={inputClass} />
-      </Field>
-      <Field label="SEO description">
-        <textarea
-          name="seoDescription"
-          rows={2}
-          defaultValue={service?.seoDescription ?? ""}
-          className={inputClass}
-        />
-      </Field>
+      <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 space-y-4">
+        <p className="text-sm font-medium text-zinc-200">SEO</p>
+        <Field label="SEO title">
+          <SeoTitleInput
+            defaultValue={service?.seoTitle ?? ""}
+            className={inputClass}
+          />
+        </Field>
+        <Field label="SEO description">
+          <SeoDescriptionInput
+            defaultValue={service?.seoDescription ?? ""}
+            className={inputClass}
+          />
+        </Field>
+      </div>
       <FormActions>
         <SubmitButton label={submitLabel} />
       </FormActions>

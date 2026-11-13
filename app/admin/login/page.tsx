@@ -34,12 +34,25 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4">
-      <div className="w-full max-w-sm rounded-lg border border-zinc-800 bg-zinc-900 p-8 shadow-xl">
-        <h1 className="font-display text-xl text-white">Norris Admin</h1>
-        <p className="mt-1 text-sm text-zinc-500">Password required</p>
-        <form onSubmit={onSubmit} className="mt-6 space-y-4">
-          <label className="block text-sm text-zinc-300">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#070707] px-4">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(224,104,32,0.18), transparent 55%), radial-gradient(ellipse 50% 40% at 80% 100%, rgba(255,255,255,0.04), transparent 50%)",
+        }}
+        aria-hidden
+      />
+      <div className="relative w-full max-w-md rounded-2xl border border-white/10 bg-[#101012]/90 p-8 shadow-[0_30px_80px_rgba(0,0,0,0.55)] backdrop-blur">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#E06820]">
+          Norris Construction
+        </p>
+        <h1 className="mt-2 font-display text-3xl text-white">Admin access</h1>
+        <p className="mt-2 text-sm text-zinc-500">
+          Manage leads, content, SEO, and automations.
+        </p>
+        <form onSubmit={onSubmit} className="mt-8 space-y-5">
+          <label className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
             Password
             <input
               type="password"
@@ -48,7 +61,7 @@ export default function AdminLoginPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-md border border-zinc-700 bg-zinc-950 px-3 py-2 text-white outline-none ring-[var(--color-orange)] focus:ring-2"
+              className="mt-2 w-full rounded-lg border border-white/10 bg-[#0c0c0e] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[#E06820]/50 focus:ring-1 focus:ring-[#E06820]/35"
             />
           </label>
           {error ? (
@@ -59,7 +72,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={pending}
-            className="w-full rounded-md bg-[var(--color-orange)] px-4 py-2 text-sm font-medium text-white transition hover:brightness-110 disabled:opacity-60"
+            className="w-full rounded-lg bg-[#E06820] px-4 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(224,104,32,0.3)] transition hover:brightness-110 disabled:opacity-60"
           >
             {pending ? "Signing in…" : "Sign in"}
           </button>

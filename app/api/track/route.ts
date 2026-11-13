@@ -1,3 +1,4 @@
+import { hasDatabase } from "@/lib/has-database";
 import { getPrisma } from "@/lib/prisma";
 import { rateLimit } from "@/lib/rate-limit";
 
@@ -37,13 +38,15 @@ export async function POST(request: Request) {
 
   const userAgent = request.headers.get("user-agent");
 
-  await getPrisma().visitorEvent.create({
-    data: {
-      path: body.path.trim().slice(0, 2048),
-      referrer: referrer?.slice(0, 2048),
-      userAgent: userAgent?.slice(0, 512),
-    },
-  });
+  if (hasDatabase()) {
+    await getPrisma().visitorEvent.create({
+      data: {
+        path: body.path.trim().slice(0, 2048),
+        referrer: referrer?.slice(0, 2048),
+        userAgent: userAgent?.slice(0, 512),
+      },
+    });
+  }
 
   return Response.json({ ok: true });
 }

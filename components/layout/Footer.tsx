@@ -1,12 +1,31 @@
-import Link from "next/link";
-import { telHref } from "@/lib/site-settings";
+"use client";
 
-const navLinks = [
+import Image from "next/image";
+import Link from "next/link";
+import { useConversion } from "@/components/conversion/ConversionProvider";
+import { telHref } from "@/lib/phone-links";
+
+const exploreLinks = [
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
+] as const;
+
+const areaLinks = [
+  { href: "/areas/miami-beach", label: "Miami Beach" },
+  { href: "/areas/coral-gables", label: "Coral Gables" },
+  { href: "/areas/brickell", label: "Brickell" },
+  { href: "/areas/fort-lauderdale", label: "Fort Lauderdale" },
+] as const;
+
+const serviceLinks = [
+  { href: "/services/custom-homes", label: "Custom Homes" },
+  { href: "/services/renovations", label: "Renovations" },
+  { href: "/services/kitchens", label: "Kitchens" },
+  { href: "/services/bathrooms", label: "Bathrooms" },
+  { href: "/services/outdoor-living", label: "Outdoor Living" },
 ] as const;
 
 type FooterProps = {
@@ -24,51 +43,134 @@ export function Footer({
   licenseText,
   insuranceText,
 }: FooterProps) {
+  const { openQuiz, openContact } = useConversion();
+
   return (
-    <footer className="border-t border-[var(--color-stone)]/20 bg-[var(--color-ink)]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className="space-y-3 text-sm text-[var(--color-cream)]/80">
-          <p className="font-display text-lg text-[var(--color-cream)]">
-            Norris Construction
-          </p>
-          <p>{address}</p>
-          <p>
-            <a
-              href={telHref(phone)}
-              className="hover:text-[var(--color-orange)]"
+    <footer className="relative overflow-hidden border-t border-[var(--color-stone)]/20 bg-[var(--color-ink)]">
+      <div
+        className="pointer-events-none absolute -top-24 right-0 h-64 w-64 rounded-full bg-[var(--color-orange)]/10 blur-3xl"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 pt-14 sm:px-6 sm:pt-16">
+        <div className="flex flex-col gap-8 border-b border-[var(--color-stone)]/15 pb-12 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-xl">
+            <Image
+              src="/images/logo.png"
+              alt="Norris Construction"
+              width={220}
+              height={72}
+              className="h-14 w-auto sm:h-16"
+            />
+            <p className="mt-5 text-sm leading-relaxed text-[var(--color-cream)]/70">
+              Luxury custom homes and remodeling across Miami and South Florida —
+              clear estimates, accountable supervision, finishes that photograph.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={openQuiz}
+              className="btn-primary touch-manipulation"
             >
-              {phone}
-            </a>
-          </p>
-          <p>
-            <a
-              href={`mailto:${email}`}
-              className="hover:text-[var(--color-orange)]"
+              Start quote quiz
+            </button>
+            <button
+              type="button"
+              onClick={openContact}
+              className="btn-ghost touch-manipulation"
             >
-              {email}
-            </a>
-          </p>
-          <p className="text-[var(--color-cream)]/60">{licenseText}</p>
-          <p className="text-[var(--color-cream)]/60">{insuranceText}</p>
+              Contact us
+            </button>
+          </div>
         </div>
 
-        <nav
-          className="flex flex-col gap-2 text-sm text-[var(--color-cream)]/80"
-          aria-label="Footer"
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="w-fit transition-colors hover:text-[var(--color-orange)]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-orange)]">
+              Contact
+            </p>
+            <ul className="mt-4 space-y-3 text-sm text-[var(--color-cream)]/80">
+              <li>{address}</li>
+              <li>
+                <a
+                  href={telHref(phone)}
+                  className="transition-colors hover:text-[var(--color-orange)]"
+                >
+                  {phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${email}`}
+                  className="transition-colors hover:text-[var(--color-orange)]"
+                >
+                  {email}
+                </a>
+              </li>
+              <li className="pt-2 text-[var(--color-cream)]/55">{licenseText}</li>
+              <li className="text-[var(--color-cream)]/55">{insuranceText}</li>
+            </ul>
+          </div>
 
-        <div className="text-sm text-[var(--color-cream)]/60 md:col-span-2 lg:col-span-1 lg:text-right">
-          <p>&copy; Norris Construction. All rights reserved.</p>
+          <nav aria-label="Explore">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-orange)]">
+              Explore
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm text-[var(--color-cream)]/80">
+              {exploreLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-[var(--color-orange)]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Services">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-orange)]">
+              Services
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm text-[var(--color-cream)]/80">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-[var(--color-orange)]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Areas">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-orange)]">
+              Areas
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm text-[var(--color-cream)]/80">
+              {areaLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-[var(--color-orange)]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-[var(--color-stone)]/15 py-6 text-xs text-[var(--color-cream)]/45 sm:flex-row sm:items-center sm:justify-between">
+          <p>© Norris Construction. All rights reserved.</p>
+          <p>Miami-Dade · Broward · South Florida</p>
         </div>
       </div>
     </footer>

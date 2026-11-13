@@ -1,26 +1,44 @@
-import Link from "next/link";
+"use client";
+
+import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
+import { useConversion } from "@/components/conversion/ConversionProvider";
 
 export function EstimateCta() {
+  const { openQuiz, openContact } = useConversion();
+
   return (
-    <section className="border-t border-[var(--color-stone)]/15 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section className="relative overflow-hidden section-pad">
+      <Image
+        src="/images/cta-band.jpg"
+        alt=""
+        fill
+        className="object-cover"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-[var(--color-ink)]/80" />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <div className="flex flex-col items-start gap-6 border border-[var(--color-stone)]/25 px-8 py-10 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h2 className="font-display text-2xl text-[var(--color-cream)] sm:text-3xl">
-                Ready for a clear estimate?
-              </h2>
-              <p className="mt-2 max-w-lg text-[var(--color-cream)]/75">
-                Tell us about your project — we respond within one business day.
-              </p>
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-orange)]">
+              Next step
+            </p>
+            <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
+              Ready when you are — estimate in under a minute
+            </h2>
+            <p className="mt-4 text-[var(--color-cream)]/80">
+              Answer a few questions or send a quick message. We reply within
+              one business day with a clear next step — no vague ranges, no
+              hard sell.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <button type="button" onClick={openQuiz} className="btn-primary">
+                Take the quote quiz
+              </button>
+              <button type="button" onClick={openContact} className="btn-ghost">
+                Open contact form
+              </button>
             </div>
-            <Link
-              href="/contact"
-              className="shrink-0 rounded-full bg-[var(--color-orange)] px-7 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            >
-              Get estimate
-            </Link>
           </div>
         </Reveal>
       </div>

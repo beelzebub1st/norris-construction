@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: norrisconstruction-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: norris
+      POSTGRES_PASSWORD: norris
+      POSTGRES_DB: norris
+    ports:
+      - "5434:5432"
+    volumes:
+      - norrisconstruction_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U norris -d norris"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DATABASE_URL: postgresql://norris:norris@host.docker.internal:5434/norris?sslmode=disable
+        NEXT_PUBLIC_SITE_URL: http://localhost:3020
+      extra_hosts:
+        - "host.docker.internal:host-gateway"
+    container_name: norrisconstruction
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "3020:3000"
+    environment:
+      DATABASE_URL: postgresql://norris:norris@db:5432/norris?sslmode=disable
+      ADMIN_PASSWORD: NorrisAdmin2026!
+      SESSION_SECRET: norris-local-session-secret-32chars-min
+      RESEND_API_KEY: ""
+      RESEND_FROM: Norris Construction <noreply@localhost>
+      LEAD_NOTIFY_EMAIL: leads@localhost
+      CRON_SECRET: norris-local-cron-secret
+      SITE_URL: http://localhost:3020
+      NEXT_PUBLIC_SITE_URL: http://localhost:3020
+
+volumes:
+  norrisconstruction_pg:

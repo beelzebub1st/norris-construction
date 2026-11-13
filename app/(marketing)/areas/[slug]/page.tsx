@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Reveal } from "@/components/motion/Reveal";
 import { EstimateCta } from "@/components/sections/EstimateCta";
 import {
@@ -11,6 +12,8 @@ import {
   listProjects,
 } from "@/lib/content";
 import { PROJECT_TYPE_LABELS } from "@/lib/project-labels";
+import { breadcrumbJsonLd } from "@/lib/seo/json-ld-data";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const instant = false;
 
@@ -30,10 +33,11 @@ export async function generateMetadata({
   const area = await getAreaBySlug(slug);
   if (!area) return { title: "Area not found" };
 
-  return {
+  return buildPageMetadata({
     title: area.seoTitle ?? `${area.name} Construction`,
     description: area.seoDescription ?? area.headline,
-  };
+    path: `/areas/${slug}`,
+  });
 }
 
 async function AreaDetailContent({ slug }: { slug: string }) {
@@ -47,6 +51,12 @@ async function AreaDetailContent({ slug }: { slug: string }) {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: area.name, path: `/areas/${area.slug}` },
+        ])}
+      />
       <section className="border-b border-[var(--color-stone)]/15 py-14 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-xs uppercase tracking-wide text-[var(--color-cream)]/55">

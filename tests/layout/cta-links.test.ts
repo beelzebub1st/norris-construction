@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { smsHref, telHref } from "@/lib/site-settings";
+import { smsHref, telHref } from "@/lib/phone-links";
 
 describe("cta hrefs", () => {
   it("builds tel and sms links", () => {

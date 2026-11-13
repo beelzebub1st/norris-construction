@@ -1,4 +1,5 @@
 import type { EmailLog, SiteSettings } from "@prisma/client";
+import Link from "next/link";
 import { Field, FormActions, SubmitButton } from "@/components/admin/admin-chrome";
 import { saveNurtureAutomation } from "@/app/admin/(dashboard)/automations/actions";
 
@@ -33,22 +34,27 @@ export function AutomationsPanel({ settings, recentEmails }: AutomationsPanelPro
       </form>
 
       <div>
-        <h2 className="mb-3 text-sm font-medium text-zinc-200">Recent email log</h2>
-        <div className="overflow-x-auto rounded-lg border border-zinc-800">
-          <table className="min-w-full divide-y divide-zinc-800 text-sm">
-            <thead className="bg-zinc-900/80">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <h2 className="text-sm font-medium text-zinc-200">Recent email log</h2>
+          <Link href="/admin/emails" className="text-xs text-[#E06820] hover:underline">
+            Full email inbox
+          </Link>
+        </div>
+        <div className="overflow-x-auto rounded-2xl border border-white/10">
+          <table className="min-w-full divide-y divide-white/10 text-sm">
+            <thead className="bg-white/[0.03]">
               <tr>
                 {["When", "Template", "To", "Status", "Lead"].map((header) => (
                   <th
                     key={header}
-                    className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-zinc-500"
+                    className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500"
                   >
                     {header}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800 bg-zinc-950">
+            <tbody className="divide-y divide-white/5 bg-[#0c0c0e]/60">
               {recentEmails.map((row) => (
                 <tr key={row.id} className="text-zinc-300">
                   <td className="whitespace-nowrap px-4 py-3 text-xs text-zinc-500">

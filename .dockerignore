@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.worktrees
+.superpowers
+docs
+*.md
+.env
+.env.local
+tests
+coverage
+agent-transcripts

@@ -1,8 +1,9 @@
 export function siteUrl() {
-  return (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(
-    /\/$/,
-    "",
-  );
+  return (
+    process.env.SITE_URL ??
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    "http://localhost:3020"
+  ).replace(/\/$/, "");
 }
 
 export type SitemapSlugs = {

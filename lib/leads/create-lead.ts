@@ -1,5 +1,6 @@
 import type { ProjectType } from "@prisma/client";
 import { sendLeadEmails } from "@/lib/email/send";
+import { hasDatabase } from "@/lib/has-database";
 import { getPrisma } from "@/lib/prisma";
 import { mapBudgetToPrisma } from "@/lib/types";
 import type { EstimateInput } from "@/lib/leads/validate";
@@ -18,6 +19,11 @@ export async function createLeadFromEstimate(
 ): Promise<CreateLeadResult> {
   if (input.honeypot?.trim()) {
     return { ok: true, spam: true };
+  }
+
+  if (!hasDatabase()) {
+    // Preview / static deploy without Postgres — accept form, skip persistence.
+    return { ok: true, leadId: `demo-${Date.now()}` };
   }
 
   const prisma = getPrisma();

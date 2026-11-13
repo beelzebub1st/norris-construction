@@ -1,14 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { MobileNav } from "@/components/layout/MobileNav";
-import { telHref, smsHref } from "@/lib/site-settings";
+import { useConversion } from "@/components/conversion/ConversionProvider";
+import { telHref } from "@/lib/phone-links";
 
 const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
 type HeaderProps = {
@@ -16,20 +18,21 @@ type HeaderProps = {
   sms: string;
 };
 
-export function Header({ phone, sms }: HeaderProps) {
+export function Header({ phone }: HeaderProps) {
+  const { openContact, openQuiz } = useConversion();
+
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--color-stone)]/20 bg-[var(--color-ink)]/95 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+    <header className="sticky top-0 z-40 border-b border-[var(--color-stone)]/15 bg-[var(--color-ink)]/80 backdrop-blur-xl">
+      <div className="mx-auto flex h-[var(--header-h)] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="flex shrink-0 items-center gap-3">
           <Image
             src="/images/logo.png"
             alt="Norris Construction"
-            width={140}
-            height={48}
+            width={150}
+            height={52}
             className="h-10 w-auto sm:h-11"
             priority
           />
-          <span className="sr-only font-display">Norris Construction</span>
         </Link>
 
         <nav
@@ -45,21 +48,25 @@ export function Header({ phone, sms }: HeaderProps) {
               {link.label}
             </Link>
           ))}
+          <button
+            type="button"
+            onClick={openContact}
+            className="transition-colors hover:text-[var(--color-orange)]"
+          >
+            Contact
+          </button>
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-3 md:flex">
           <a
-            href={smsHref(sms)}
-            className="text-sm font-medium text-[var(--color-cream)]/90 transition-colors hover:text-[var(--color-orange)]"
+            href={telHref(phone)}
+            className="text-sm font-semibold text-[var(--color-cream)] transition-colors hover:text-[var(--color-orange)]"
           >
-            Text
+            Call
           </a>
-          <Link
-            href="/contact"
-            className="rounded-full bg-[var(--color-orange)] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-          >
-            Get estimate
-          </Link>
+          <button type="button" onClick={openQuiz} className="btn-primary !py-2.5 !px-5">
+            Quote quiz
+          </button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
