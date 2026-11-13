@@ -4,6 +4,7 @@ import {
   getPostBySlug,
   getProjectBySlug,
   getServiceBySlug,
+  isProjectPubliclyVisible,
   parseBeforeAfter,
   parseServiceFaqs,
 } from "@/lib/content";
@@ -22,6 +23,21 @@ describe("content slug helpers", () => {
       { bad: true },
     ]);
     expect(faqs).toEqual([{ q: "Timeline?", a: "12–18 months." }]);
+  });
+
+  it("gates public projects on publishedAt", () => {
+    const now = new Date("2026-06-01T12:00:00.000Z");
+    expect(isProjectPubliclyVisible(null, now)).toBe(false);
+    expect(isProjectPubliclyVisible(undefined, now)).toBe(false);
+    expect(
+      isProjectPubliclyVisible(new Date("2026-06-02T00:00:00.000Z"), now),
+    ).toBe(false);
+    expect(
+      isProjectPubliclyVisible(new Date("2026-05-01T00:00:00.000Z"), now),
+    ).toBe(true);
+    expect(
+      isProjectPubliclyVisible(new Date("2026-06-01T12:00:00.000Z"), now),
+    ).toBe(true);
   });
 
   it("parses before/after pairs from JSON", () => {

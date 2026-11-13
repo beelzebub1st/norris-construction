@@ -1,6 +1,23 @@
 import { PostStatus, type ProjectType, type Prisma } from "@prisma/client";
 import { getPrisma } from "@/lib/prisma";
 
+/** Projects visible on the marketing site (published, not scheduled for the future). */
+export function publicProjectWhere(
+  now: Date = new Date(),
+): Pick<Prisma.ProjectWhereInput, "publishedAt"> {
+  return {
+    publishedAt: { not: null, lte: now },
+  };
+}
+
+export function isProjectPubliclyVisible(
+  publishedAt: Date | null | undefined,
+  now: Date = new Date(),
+): boolean {
+  if (publishedAt == null) return false;
+  return publishedAt.getTime() <= now.getTime();
+}
+
 export async function getServiceBySlug(slug: string) {
   "use cache";
   return getPrisma().service.findUnique({ where: { slug } });
@@ -8,7 +25,9 @@ export async function getServiceBySlug(slug: string) {
 
 export async function getProjectBySlug(slug: string) {
   "use cache";
-  return getPrisma().project.findUnique({ where: { slug } });
+  return getPrisma().project.findFirst({
+    where: { slug, ...publicProjectWhere() },
+  });
 }
 
 export async function getAreaBySlug(slug: string) {
@@ -55,7 +74,9 @@ export type ProjectListFilters = {
 
 export async function listProjects(filters: ProjectListFilters = {}) {
   "use cache";
-  const where: Prisma.ProjectWhereInput = {};
+  const where: Prisma.ProjectWhereInput = {
+    ...publicProjectWhere(),
+  };
 
   if (filters.type) {
     where.type = filters.type as ProjectType;
@@ -92,7 +113,7 @@ export async function getProjectsByIds(ids: string[]) {
   "use cache";
   if (ids.length === 0) return [];
   return getPrisma().project.findMany({
-    where: { id: { in: ids } },
+    where: { id: { in: ids }, ...publicProjectWhere() },
     select: {
       title: true,
       slug: true,

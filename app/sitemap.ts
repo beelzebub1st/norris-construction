@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { PostStatus } from "@prisma/client";
+import { publicProjectWhere } from "@/lib/content";
 import { getPrisma } from "@/lib/prisma";
 import { buildSitemapPaths, siteUrl } from "@/lib/seo/sitemap-paths";
 
@@ -12,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       select: { slug: true, updatedAt: true },
     }),
     prisma.project.findMany({
-      where: { publishedAt: { not: null } },
+      where: publicProjectWhere(),
       select: { slug: true, updatedAt: true },
     }),
     prisma.area.findMany({

@@ -1,3 +1,4 @@
+import { publicProjectWhere } from "@/lib/content";
 import {
   headlineForExperiment,
   resolveExperiment,
@@ -29,7 +30,7 @@ export async function getHomepageData(visitorId?: string | null) {
       select: { title: true, slug: true, summary: true },
     }),
     prisma.project.findMany({
-      where: { featured: true },
+      where: { featured: true, ...publicProjectWhere() },
       orderBy: { publishedAt: "desc" },
       take: 4,
       select: { title: true, slug: true, summary: true, gallery: true },
