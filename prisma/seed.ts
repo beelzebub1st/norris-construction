@@ -127,6 +127,7 @@ async function main() {
       where: { slug: service.slug },
       create: {
         ...service,
+        faqs: [...service.faqs],
         heroImage: PLACEHOLDER,
         relatedProjectIds: [],
       },
@@ -134,7 +135,7 @@ async function main() {
         title: service.title,
         summary: service.summary,
         body: service.body,
-        faqs: service.faqs,
+        faqs: [...service.faqs],
         sortOrder: service.sortOrder,
         heroImage: PLACEHOLDER,
       },
@@ -144,7 +145,10 @@ async function main() {
   for (const area of areas) {
     await prisma.area.upsert({
       where: { slug: area.slug },
-      create: area,
+      create: {
+        ...area,
+        nearbyServiceSlugs: [...area.nearbyServiceSlugs],
+      },
       update: {
         name: area.name,
         headline: area.headline,
@@ -160,6 +164,7 @@ async function main() {
       where: { slug: project.slug },
       create: {
         ...project,
+        gallery: [...project.gallery],
         publishedAt: new Date(),
       },
       update: {

@@ -30,6 +30,9 @@ export function mapBudgetToPrisma(
   value?: string,
 ): BudgetRange | undefined {
   if (!value) return undefined;
+  if (!(value in TO_PRISMA)) {
+    throw new Error("Invalid budgetRange");
+  }
   return TO_PRISMA[value as BudgetRangePublic];
 }
 
