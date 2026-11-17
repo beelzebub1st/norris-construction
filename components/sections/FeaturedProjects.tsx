@@ -23,8 +23,8 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                 Recent commercial work across South Florida
               </h2>
               <p className="mt-3 text-[var(--color-cream)]/75">
-                Kitchens that cook hard, baths that hold waterproofing, outdoor rooms built for
-                year-round hosting — real homes, not mood boards.
+                Offices, restaurants, white boxing, medical suites, storage, and warehouses —
+                real commercial spaces ready for business.
               </p>
             </div>
             <Link href="/projects" className="btn-ghost w-fit">

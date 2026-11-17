@@ -6,21 +6,21 @@ import { useConversion } from "@/components/conversion/ConversionProvider";
 const STEPS = [
   {
     n: "01",
-    title: "Vision call",
-    body: "We listen hard — scope, lifestyle, budget band, and the feel you want every morning.",
+    title: "Scope call",
+    body: "We listen hard — property type, lease timeline, budget band, and how the space needs to operate.",
     deliverables: ["Project goals map", "Rough budget band", "Site-visit plan"],
   },
   {
     n: "02",
     title: "Design & numbers",
-    body: "Clear drawings, selections, and a transparent estimate so there are no surprise invoices.",
-    deliverables: ["Scope + allowances", "Written estimate", "Selection schedule"],
+    body: "Clear drawings, selections, and a transparent bid so there are no surprise invoices.",
+    deliverables: ["Scope + allowances", "Written bid", "Selection schedule"],
   },
   {
     n: "03",
     title: "Build & handover",
-    body: "Dedicated supervision, photo updates, and a clean finish that photographs like a magazine.",
-    deliverables: ["Weekly updates", "Punch walkthrough", "Warranty check-in"],
+    body: "Dedicated supervision, photo updates, and a clean commercial finish ready for occupancy or leasing.",
+    deliverables: ["Weekly updates", "Punch walkthrough", "Closeout check-in"],
   },
 ];
 
@@ -53,7 +53,7 @@ export function ProcessSection() {
               onClick={openQuiz}
               className="btn-primary w-fit touch-manipulation"
             >
-              Start step one
+              Request a Bid
             </button>
           </div>
         </Reveal>

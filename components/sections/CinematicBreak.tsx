@@ -22,7 +22,7 @@ export function CinematicBreak() {
     >
       <motion.div className="absolute inset-0" style={{ y }}>
         <Image
-          src="/images/services/custom-homes.jpg"
+          src="/images/services/warehouse.jpg"
           alt=""
           fill
           className="object-cover"
@@ -35,17 +35,17 @@ export function CinematicBreak() {
         className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center"
       >
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-orange)]">
-          South Florida standard
+          South Florida commercial
         </p>
         <h2 className="mt-4 max-w-3xl font-display text-3xl text-white sm:text-5xl">
-          Architecture-grade builds. Remodel-friendly timelines.
+          Commercial build-outs. Lease-ready timelines.
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
-          Custom homes and high-end remodels with the same supervision, documentation, and
-          finish discipline — from Jupiter to Fort Lauderdale.
+          Office, restaurant, retail, white boxing, and warehouse renovations with the same
+          supervision and finish discipline — from Jupiter to Fort Lauderdale.
         </p>
         <button type="button" onClick={openQuiz} className="btn-primary mt-8">
-          Plan my project
+          Request a Bid
         </button>
       </motion.div>
     </section>
