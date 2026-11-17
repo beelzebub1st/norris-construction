@@ -15,7 +15,7 @@ export function LeadMagnetBand({ phone }: LeadMagnetBandProps) {
   return (
     <section className="relative overflow-hidden border-y border-[var(--color-stone)]/15">
       <Image
-        src="/images/projects/kitchen.jpg"
+        src="/images/projects/whitebox.jpg"
         alt=""
         fill
         className="object-cover"
@@ -25,14 +25,14 @@ export function LeadMagnetBand({ phone }: LeadMagnetBandProps) {
       <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 sm:py-16 md:grid-cols-[1.2fr_0.8fr] md:items-center">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-            Free estimate path
+            Request a Bid
           </p>
           <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-            Know your number before you commit
+            Request a commercial construction estimate
           </h2>
           <p className="mt-4 max-w-xl text-[var(--color-cream)]/75">
-            Take the 60-second quote quiz. We map scope, budget band, and next
-            steps — then follow up within one business day.
+            Share your property type, scope, and timeline. We map next steps —
+            then follow up within one business day.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-[var(--color-cream)]/70">
             <li className="flex gap-2">
@@ -41,7 +41,7 @@ export function LeadMagnetBand({ phone }: LeadMagnetBandProps) {
             </li>
             <li className="flex gap-2">
               <span className="text-[var(--color-orange)]">✓</span>
-              Works for kitchens, baths, remodels, and custom homes
+              Built for offices, restaurants, retail, white boxing, and warehouses
             </li>
             <li className="flex gap-2">
               <span className="text-[var(--color-orange)]">✓</span>
@@ -60,7 +60,7 @@ export function LeadMagnetBand({ phone }: LeadMagnetBandProps) {
               onClick={openQuiz}
               className="btn-primary w-full touch-manipulation"
             >
-              Start quote quiz
+              Request a Bid
             </button>
             <button
               type="button"

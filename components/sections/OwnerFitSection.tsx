@@ -6,22 +6,22 @@ import { useConversion } from "@/components/conversion/ConversionProvider";
 const YES = [
   {
     title: "You want clarity before chaos",
-    body: "You would rather read a real scope and allowance list than chase verbal promises mid-demo.",
+    body: "You would rather read a real scope and bid than chase verbal promises mid-demo.",
   },
   {
-    title: "You care how it lives — not just how it lists",
-    body: "Storage, light, traffic flow, and humidity performance matter as much as the stone sample.",
+    title: "You care how the space operates",
+    body: "Leasing timelines, tenant experience, durability, and code coordination matter as much as finishes.",
   },
   {
-    title: "You expect one throat to choke",
+    title: "You expect one accountable lead",
     body: "A dedicated lead, weekly updates, and written change orders feel non-negotiable — not optional polish.",
   },
 ];
 
 const NO = [
+  "Residential / house construction",
   "Lowest-bid shopping with no drawings",
   "Surprise invoices as a business model",
-  "Generic flip finishes that fail in year two",
 ];
 
 export function OwnerFitSection() {
@@ -36,11 +36,11 @@ export function OwnerFitSection() {
               Ideal partnership
             </p>
             <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-              Built for owners who refuse remodel roulette
+              Built for commercial owners who refuse project roulette
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-cream)]/75">
               We are not the right fit for every project — and that is intentional. When the match
-              is right, the build feels calm, documented, and surprisingly enjoyable.
+              is right, the build feels calm, documented, and ready for leasing or opening day.
             </p>
           </div>
         </Reveal>
@@ -87,7 +87,7 @@ export function OwnerFitSection() {
                 onClick={openQuiz}
                 className="btn-primary mt-8 w-full touch-manipulation"
               >
-                See if we match
+                Request a Bid
               </button>
             </aside>
           </Reveal>

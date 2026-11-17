@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Norris Construction",
     short_name: "Norris",
     description:
-      "Luxury custom homes and residential remodeling across Miami and South Florida.",
+      "Commercial renovations, tenant improvements, and build-outs across Palm Beach, Broward, and Martin Counties.",
     start_url: "/",
     display: "standalone",
     background_color: "#070707",

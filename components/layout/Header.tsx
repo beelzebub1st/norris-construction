@@ -65,7 +65,7 @@ export function Header({ phone }: HeaderProps) {
             Call
           </a>
           <button type="button" onClick={openQuiz} className="btn-primary !py-2.5 !px-5">
-            Quote quiz
+            Request a Bid
           </button>
         </div>
 

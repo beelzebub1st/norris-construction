@@ -14,12 +14,14 @@ type ServicesSectionProps = {
 };
 
 const FALLBACK: Record<string, string> = {
-  "custom-homes": "/images/services/custom-homes.jpg",
-  renovations: "/images/services/renovations.jpg",
-  kitchens: "/images/services/kitchens.jpg",
-  bathrooms: "/images/services/bathrooms.jpg",
-  additions: "/images/services/additions.jpg",
-  "outdoor-living": "/images/services/outdoor-living.jpg",
+  "commercial-renovations": "/images/services/warehouse.jpg",
+  "office-buildouts": "/images/services/office.jpg",
+  "restaurant-renovations": "/images/services/restaurant.jpg",
+  "retail-shopping": "/images/services/whitebox.jpg",
+  "white-boxing": "/images/services/whitebox.jpg",
+  "storage-warehouse": "/images/services/storage.jpg",
+  "tenant-improvements": "/images/services/office.jpg",
+  "property-management": "/images/services/medical-office.jpg",
 };
 
 export function ServicesSection({ services }: ServicesSectionProps) {
@@ -33,11 +35,11 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                 Services
               </p>
               <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-                Built for how Miami lives
+                Commercial services built for business
               </h2>
               <p className="mt-3 text-[var(--color-cream)]/75">
-                From ground-up estates to kitchens, baths, additions, and outdoor living — one
-                accountable team from first sketch to final walkthrough.
+                From white-box turnovers and office build-outs to restaurants, retail, and
+                warehouses — one accountable team from walkthrough to punch list.
               </p>
             </div>
             <Link href="/services" className="btn-ghost w-fit">

@@ -18,13 +18,13 @@ const ITEMS = [
   },
   {
     title: "Clean site standard",
-    teaser: "Respect the home",
-    body: "Dust control, daily tidy-ups, and neighbor-aware logistics — especially for occupied remodels in Coral Gables, Brickell, and Miami Beach.",
+    teaser: "Respect the building",
+    body: "Dust control, daily tidy-ups, and tenant-aware logistics — especially for occupied commercial buildings across Palm Beach and Broward.",
   },
   {
-    title: "Warranty follow-through",
-    teaser: "After the champagne",
-    body: "We schedule a post-handover check and stay reachable for punch items that show up after real living starts.",
+    title: "Punch-list follow-through",
+    teaser: "After handover",
+    body: "We schedule closeout checks and stay reachable for punch items that show up after real occupancy starts.",
   },
 ];
 
@@ -40,11 +40,11 @@ export function GuaranteesSection() {
             Why Norris
           </p>
           <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-            Protections that feel expensive — in a good way
+            Protections that keep commercial projects calm
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[var(--color-cream)]/75">
-            Luxury construction fails when communication fails. These are the promises we put in
-            writing on estimates — tap each one, then ask us to attach them to your project.
+            Commercial construction fails when communication fails. These are the promises we put
+            in writing on bids — tap each one, then ask us to attach them to your project.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-[var(--color-cream)]/65">
             <li className="flex gap-2">

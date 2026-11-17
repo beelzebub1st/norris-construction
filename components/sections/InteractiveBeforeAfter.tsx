@@ -27,7 +27,7 @@ export function InteractiveBeforeAfter() {
             Drag to compare
           </p>
           <h2 className="mt-3 max-w-3xl font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-            Before is a memory. After is the listing photo.
+            Before is vacant. After is lease-ready.
           </h2>
           <p className="mt-3 max-w-xl text-[var(--color-cream)]/75">
             Slide the handle — then start a quote for your own transformation.
@@ -56,7 +56,7 @@ export function InteractiveBeforeAfter() {
           >
             <Image
               src="/images/projects/after-kitchen.jpg"
-              alt="After remodel"
+              alt="After commercial renovation"
               fill
               className="object-cover"
               sizes="100vw"
@@ -69,7 +69,7 @@ export function InteractiveBeforeAfter() {
               <div className="relative h-full" style={{ width: `${10000 / pos}%` }}>
                 <Image
                   src="/images/projects/before-kitchen.jpg"
-                  alt="Before remodel"
+                  alt="Before tenant turnover"
                   fill
                   className="object-cover"
                   sizes="100vw"
@@ -95,10 +95,10 @@ export function InteractiveBeforeAfter() {
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <button type="button" onClick={openQuiz} className="btn-primary">
-            Get a remodel like this
+            Request a bid like this
           </button>
           <p className="text-sm text-[var(--color-cream)]/60">
-            Typical kitchen path: consult → selections → build → reveal
+            Typical turnover path: walkthrough → scope → build → lease-ready
           </p>
         </div>
       </div>

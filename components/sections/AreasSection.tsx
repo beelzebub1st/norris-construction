@@ -16,21 +16,27 @@ type AreasSectionProps = {
 };
 
 const AREA_IMAGES: Record<string, string> = {
-  "miami-beach": "/images/areas/miami-beach.jpg",
-  "coral-gables": "/images/areas/coral-gables.jpg",
-  brickell: "/images/areas/brickell.jpg",
+  jupiter: "/images/areas/jupiter.jpg",
+  "west-palm-beach": "/images/areas/west-palm-beach.jpg",
   "fort-lauderdale": "/images/areas/fort-lauderdale.jpg",
+  "coral-springs": "/images/areas/coral-springs.jpg",
+  "boca-raton": "/images/areas/west-palm-beach.jpg",
+  stuart: "/images/areas/jupiter.jpg",
 };
 
 const AREA_BLURBS: Record<string, string> = {
-  "miami-beach":
-    "Coastal assemblies, salt-aware finishes, and condo logistics that respect building rules.",
-  "coral-gables":
-    "Historic character protected while kitchens, baths, and outdoor rooms get a modern rewrite.",
-  brickell:
-    "High-rise ready craft — quiet hours, freight elevators, and finishes that still feel residential.",
+  jupiter:
+    "Office build-outs, retail turnovers, and commercial renovations for northern Palm Beach.",
+  "west-palm-beach":
+    "Professional suites, shopping plaza TI, and landlord white-boxing on leasing timelines.",
   "fort-lauderdale":
-    "Indoor-outdoor living with storm-smart detailing for canals, breezes, and weekend hosting.",
+    "Restaurant, retail, and office renovations across Fort Lauderdale and greater Broward.",
+  "coral-springs":
+    "Medical suites, multi-tenant offices, and plaza improvements in northwest Broward.",
+  "boca-raton":
+    "Office modernization, retail build-outs, and commercial property renovations.",
+  stuart:
+    "Commercial renovations and facility work north through Stuart and Martin County.",
 };
 
 export function AreasSection({ areas }: AreasSectionProps) {
@@ -49,8 +55,8 @@ export function AreasSection({ areas }: AreasSectionProps) {
                 Where we build
               </h2>
               <p className="mt-3 text-[var(--color-cream)]/70">
-                Local crews. Local permitting know-how. One standard of finish from Miami Beach to
-                Fort Lauderdale.
+                Local crews. Local permitting know-how. One standard of finish across Palm Beach,
+                Broward, and Martin Counties.
               </p>
             </div>
             <button
@@ -58,7 +64,7 @@ export function AreasSection({ areas }: AreasSectionProps) {
               onClick={openQuiz}
               className="btn-ghost w-fit touch-manipulation"
             >
-              Get a local estimate
+              Request a local bid
             </button>
           </div>
         </Reveal>
@@ -71,20 +77,18 @@ export function AreasSection({ areas }: AreasSectionProps) {
                 className="group relative block min-h-[250px] overflow-hidden rounded-[1.5rem]"
               >
                 <SafeImage
-                  src={AREA_IMAGES[area.slug] || "/images/areas/miami-beach.jpg"}
+                  src={AREA_IMAGES[area.slug] || "/images/hero.jpg"}
                   alt={area.name}
                   fill
                   className="object-cover transition duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  fallbackSrc="/images/areas/miami-beach.jpg"
+                  fallbackSrc="/images/hero.jpg"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/10" />
+                <div className="relative z-10 flex h-full min-h-[250px] flex-col justify-end p-6">
                   <h3 className="font-display text-2xl text-white">{area.name}</h3>
-                  <p className="mt-2 text-sm text-white/80">{area.headline}</p>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/65">
-                    {AREA_BLURBS[area.slug] ??
-                      "Local craftsmanship with a finish standard that travels across South Florida."}
+                  <p className="mt-2 max-w-md text-sm text-white/75">
+                    {AREA_BLURBS[area.slug] || area.headline}
                   </p>
                 </div>
               </Link>

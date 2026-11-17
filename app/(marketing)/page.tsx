@@ -22,6 +22,7 @@ import { ConversionFaq } from "@/components/sections/ConversionFaq";
 import { BlogTeaser } from "@/components/sections/BlogTeaser";
 import { EstimateCta } from "@/components/sections/EstimateCta";
 import { LeadMagnetBand } from "@/components/sections/LeadMagnetBand";
+import { IdealFitSection } from "@/components/sections/IdealFitSection";
 import { OwnerFitSection } from "@/components/sections/OwnerFitSection";
 import { HomeLeadSplit } from "@/components/sections/HomeLeadSplit";
 import { getHomepageData } from "@/lib/homepage-data";
@@ -36,7 +37,7 @@ import {
 } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Norris Construction | Miami Luxury Homes & Remodeling",
+  title: "Norris Construction | Commercial Construction & Renovations",
   description: DEFAULT_DESCRIPTION,
   path: "/",
   image: "/images/hero.jpg",
@@ -74,6 +75,7 @@ export default async function HomePage() {
       <StatsCounters />
       <HomeStorySection />
       <ServicesSection services={services} />
+      <IdealFitSection />
       <LeadMagnetBand phone={settings.phone} />
       <InteractiveBeforeAfter />
       <FeaturedProjects projects={featuredProjects} />

@@ -15,22 +15,22 @@ import { SafeImage } from "@/components/ui/SafeImage";
 
 const EXTRA = [
   {
-    title: "Outdoor living pavilion",
+    title: "Self-storage renovation",
     slug: "projects",
-    summary: "Poolside summer kitchen & covered lounge",
-    image: "/images/projects/outdoor.jpg",
+    summary: "Corridors, unit doors & epoxy flooring",
+    image: "/images/projects/storage.jpg",
   },
   {
-    title: "Spa primary bath",
+    title: "Medical & dental suite",
     slug: "projects",
-    summary: "Stone, steam, and quiet luxury",
-    image: "/images/projects/bath.jpg",
+    summary: "Reception, waiting & clinical finishes",
+    image: "/images/projects/medical-office.jpg",
   },
   {
-    title: "Custom coastal estate",
-    slug: "services/custom-homes",
-    summary: "Ground-up architecture partnership",
-    image: "/images/services/custom-homes.jpg",
+    title: "Warehouse interior",
+    slug: "services/storage-warehouse",
+    summary: "Industrial facility modernization",
+    image: "/images/projects/warehouse.jpg",
   },
 ];
 

@@ -66,7 +66,7 @@ export function ConversionFaq() {
             Take the 60-second quiz — we’ll respond with a clear next step.
           </p>
           <button type="button" onClick={openQuiz} className="btn-primary mt-5">
-            Start quote quiz
+            Request a Bid
           </button>
         </div>
       </div>

@@ -31,7 +31,7 @@ export function StickyCallBar({ phone, sms }: StickyCallBarProps) {
           onClick={openQuiz}
           className="bg-[var(--color-orange)] px-2 py-3.5 text-center text-xs font-bold uppercase tracking-wide text-white"
         >
-          Quote quiz
+          Request a Bid
         </button>
       </div>
     </div>

@@ -1,22 +1,22 @@
 export const HOME_FAQS = [
   {
-    q: "How fast can we get a ballpark?",
-    a: "Most homeowners get a directional range after the quote quiz + a short call. Detailed numbers follow a site visit.",
+    q: "How fast can we get a commercial bid?",
+    a: "Most property owners and managers receive a directional range after a short call or bid form. Detailed numbers follow a site walkthrough and review of plans when available.",
   },
   {
-    q: "Do you work on occupied homes?",
-    a: "Yes. We phase kitchens and baths so you can stay livable, with dust control and clear daily expectations.",
+    q: "Do you work for landlords and property managers?",
+    a: "Yes. White boxing, tenant turnovers, capital improvements, and multi-suite renovations are core work for commercial landlords and property management companies.",
   },
   {
     q: "Are permits and inspections included?",
-    a: "We manage permitting and inspections for scopes that require them across Miami-Dade and Broward.",
+    a: "Yes. Norris Construction Corp operates as a commercial general contractor and pulls permits for scopes that require them across Palm Beach, Broward, and Martin Counties — including inspections and punch-list corrections.",
   },
   {
-    q: "What if selections change mid-project?",
-    a: "We document changes as written change orders with price and schedule impact before work continues.",
+    q: "What if the scope changes mid-project?",
+    a: "Changes are documented as written change orders with price and schedule impact before work continues.",
   },
   {
-    q: "Can you match an Instagram kitchen I saved?",
-    a: "Bring the references. We’ll translate looks into buildable details, budgets, and lead times that fit South Florida.",
+    q: "Can you work from plans, drawings, or photos?",
+    a: "Yes. Upload plans or photos with your bid request — or schedule a walkthrough and we will define the scope on site.",
   },
 ] as const;

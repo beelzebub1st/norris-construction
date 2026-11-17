@@ -9,7 +9,7 @@ export function getResendApiKey(): string | undefined {
 export function getResendFromAddress(): string {
   return (
     process.env.RESEND_FROM?.trim() ||
-    "Norris Construction <noreply@example.com>"
+    "Norris Construction Corp <Info@norrisconstruction.co>"
   );
 }
 

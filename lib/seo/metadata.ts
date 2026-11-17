@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { siteUrl } from "@/lib/seo/sitemap-paths";
 
 const DEFAULT_DESCRIPTION =
-  "Luxury custom homes and residential remodeling across Miami, Coral Gables, Brickell, Miami Beach, and Fort Lauderdale.";
+  "Commercial renovations, tenant improvements, office build-outs, white boxing, and warehouse renovations across Palm Beach, Broward, and Martin Counties.";
 
 const DEFAULT_OG_IMAGE = "/images/hero.jpg";
 

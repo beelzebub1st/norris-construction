@@ -8,26 +8,26 @@ const STATS = [
     label: "Projects delivered",
     value: 180,
     suffix: "+",
-    hint: "Homes, kitchens, baths, and outdoor builds",
+    hint: "Offices, retail, restaurants, warehouses, and turnovers",
   },
   {
     label: "Avg. client rating",
     value: 4.9,
     suffix: "",
     decimals: 1,
-    hint: "From homeowners who lived through the process",
+    hint: "From owners, managers, and operators who hired us",
   },
   {
     label: "South Florida cities",
-    value: 12,
+    value: 20,
     suffix: "+",
-    hint: "Miami-Dade & Broward neighborhoods",
+    hint: "Palm Beach, Broward & Martin Counties",
   },
   {
     label: "Response window",
     value: 1,
     suffix: " day",
-    hint: "Typical reply after quiz or form",
+    hint: "Typical reply after a bid request",
   },
 ];
 
@@ -120,8 +120,8 @@ export function StatsCounters() {
                 Numbers that calm a big decision
               </h2>
               <p className="mt-4 text-[var(--color-cream)]/72">
-                Remodels and custom homes are expensive emotional investments. These are the
-                receipts we share before anyone picks up a hammer.
+                Commercial renovations are schedule- and budget-critical. These are the receipts
+                we share before anyone picks up a hammer.
               </p>
             </div>
           </div>

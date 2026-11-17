@@ -12,7 +12,7 @@ import {
   renderEmailTemplate,
 } from "@/lib/email/templates";
 
-const DEFAULT_SITE_EMAIL = "hello@norris.construction";
+const DEFAULT_SITE_EMAIL = "Info@norrisconstruction.co";
 
 async function getSiteEmail() {
   const prisma = getPrisma();

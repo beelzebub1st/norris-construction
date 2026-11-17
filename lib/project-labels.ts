@@ -1,12 +1,12 @@
 import type { ProjectType } from "@prisma/client";
 
 export const PROJECT_TYPE_LABELS: Record<ProjectType, string> = {
-  custom_home: "Custom home",
-  remodel: "Remodel",
-  kitchen: "Kitchen",
-  bath: "Bath",
-  addition: "Addition",
-  outdoor: "Outdoor",
+  custom_home: "Office build-out",
+  remodel: "Commercial renovation",
+  kitchen: "Restaurant renovation",
+  bath: "Medical / professional",
+  addition: "Storage & warehouse",
+  outdoor: "White boxing / turnover",
 };
 
 export const PROJECT_TYPE_FILTER_OPTIONS: { value: ProjectType; label: string }[] =

@@ -11,7 +11,7 @@ type PageCtaButtonsProps = {
 
 export function PageCtaButtons({
   phone,
-  primaryLabel = "Start quote quiz",
+  primaryLabel = "Request a Bid",
   className = "",
 }: PageCtaButtonsProps) {
   const { openQuiz, openContact } = useConversion();
@@ -30,7 +30,7 @@ export function PageCtaButtons({
         onClick={openContact}
         className="btn-ghost touch-manipulation"
       >
-        Contact us
+        Contact
       </button>
       {phone ? (
         <a href={telHref(phone)} className="btn-ghost touch-manipulation">

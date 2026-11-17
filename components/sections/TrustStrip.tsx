@@ -13,7 +13,7 @@ export function TrustStrip({
     yearsInBusiness,
     licenseText,
     insuranceText,
-    "Miami & South Florida",
+    "Palm Beach · Broward · Martin",
     "Design-build partners",
     "On-time craftsmanship",
     "Free project estimate",

@@ -7,18 +7,18 @@ import { useConversion } from "@/components/conversion/ConversionProvider";
 const BLOCKS = [
   {
     title: "Permits without the mystery",
-    body: "Miami-Dade and Broward scopes that need permitting get a documented path — inspections included, surprises reduced.",
-    image: "/images/services/renovations.jpg",
+    body: "As your commercial GC, we pull permits for Palm Beach, Broward, and Martin County scopes that need them — inspections included, surprises reduced.",
+    image: "/images/services/whitebox.jpg",
   },
   {
-    title: "Materials that hold up",
-    body: "We specify for humidity, salt air, and storm seasons: waterproofing, ventilation, and finishes that earn their keep.",
-    image: "/images/services/bathrooms.jpg",
+    title: "Finishes that hold up",
+    body: "We specify for commercial traffic, humidity, and daily operations: durable flooring, coatings, and assemblies that earn their keep.",
+    image: "/images/services/storage.jpg",
   },
   {
-    title: "Occupied-home discipline",
-    body: "Phased kitchens and baths with dust control and daily expectations — so you can stay livable while we build.",
-    image: "/images/services/kitchens.jpg",
+    title: "Occupied-building discipline",
+    body: "Phased renovations with dust control and clear daily expectations — so adjacent tenants and operations can keep moving.",
+    image: "/images/services/office.jpg",
   },
 ];
 
@@ -31,15 +31,15 @@ export function ClimateCraftSection() {
         <Reveal>
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-              Built for South Florida
+              Built for South Florida commercial
             </p>
             <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-              Climate is not a footnote. It is the brief.
+              From vacant suite to business-ready
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-cream)]/75">
-              Pretty kitchens fail when waterproofing, HVAC returns, and coastal detailing are treated
-              as afterthoughts. We design assemblies for how Miami actually lives — then finish them
-              so they photograph.
+              Pretty finishes fail when sequencing, code coordination, and landlord criteria are
+              treated as afterthoughts. We plan commercial renovations for how properties actually
+              lease and operate — then deliver spaces that are ready to show or occupy.
             </p>
           </div>
         </Reveal>
@@ -77,8 +77,8 @@ export function ClimateCraftSection() {
                 Not sure if your scope needs permitting?
               </p>
               <p className="mt-2 max-w-xl text-sm text-[var(--color-cream)]/70">
-                Send photos and a short note — we will tell you what is likely required before you
-                spend on finishes.
+                Send plans or photos and a short note — we will tell you what is likely required
+                before you spend on finishes.
               </p>
             </div>
             <button
@@ -86,7 +86,7 @@ export function ClimateCraftSection() {
               onClick={openContact}
               className="btn-primary shrink-0 touch-manipulation"
             >
-              Ask about your home
+              Ask about your project
             </button>
           </div>
         </Reveal>

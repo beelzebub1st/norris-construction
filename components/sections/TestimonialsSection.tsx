@@ -11,19 +11,19 @@ type TestimonialsSectionProps = {
 
 const PLACEHOLDERS: TestimonialItem[] = [
   {
-    name: "Patricia M. · Coral Gables",
+    name: "Marcus T. · Property Manager, West Palm Beach",
     quote:
-      "Norris rebuilt our kitchen and primary bath without the usual remodel nightmare. Updates every week. Finishes look expensive — because they are.",
+      "Norris turned a vacated retail suite into a clean white box on schedule. Leasing could show the space immediately — no punch-list drama.",
   },
   {
-    name: "Daniel R. · Miami Beach",
+    name: "Dana L. · Restaurant Operator, Fort Lauderdale",
     quote:
-      "From permitting to punch list, they owned the timeline. Our penthouse kitchen feels custom, not contractor-generic.",
+      "Our bar and dining renovation stayed coordinated from demo through final finishes. Clear updates, practical solutions, and a space ready for service.",
   },
   {
-    name: "Elena S. · Brickell",
+    name: "James R. · Commercial Landlord, Jupiter",
     quote:
-      "We compared three builders. Norris was the only team that asked how we actually live — then designed around that.",
+      "We use Norris for tenant turnovers and office TI across our Palm Beach portfolio. Dependable execution and communication our tenants appreciate.",
   },
 ];
 

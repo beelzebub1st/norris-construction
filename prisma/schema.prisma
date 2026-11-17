@@ -120,13 +120,13 @@ model Testimonial {
 
 model SiteSettings {
   id              String  @id @default("singleton")
-  phone           String  @default("(305) 555-0100")
-  sms             String  @default("+13055550100")
-  email           String  @default("hello@norris.construction")
-  address         String  @default("Miami, FL")
-  licenseText     String  @default("License # — coming soon")
-  insuranceText   String  @default("Fully insured — details coming soon")
-  yearsInBusiness String  @default("Years of craftsmanship")
+  phone           String  @default("(312) 483-6046")
+  sms             String  @default("+13124836046")
+  email           String  @default("Info@norrisconstruction.co")
+  address         String  @default("2412 Stonybrook Drive, Wellington, FL")
+  licenseText     String  @default("Commercial general contractor · We pull permits")
+  insuranceText   String  @default("Bonded and insured")
+  yearsInBusiness String  @default("Commercial renovations across South Florida")
   socials         Json    @default("{}")
   chatEmbedHtml   String? @db.Text
   chatEnabled     Boolean @default(false)

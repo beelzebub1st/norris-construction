@@ -17,14 +17,14 @@ type Answers = {
 const STEPS = [
   {
     key: "projectType" as const,
-    title: "What are you building?",
+    title: "What type of commercial project?",
     options: [
-      { value: "custom_home", label: "Custom home", hint: "Ground-up build" },
-      { value: "remodel", label: "Full remodel", hint: "Whole-home refresh" },
-      { value: "kitchen", label: "Kitchen", hint: "Cabinets & layout" },
-      { value: "bath", label: "Bathroom", hint: "Spa-level suite" },
-      { value: "addition", label: "Addition", hint: "More living space" },
-      { value: "outdoor", label: "Outdoor living", hint: "Pool & terrace" },
+      { value: "remodel", label: "Commercial renovation", hint: "Interior refresh" },
+      { value: "custom_home", label: "Office build-out", hint: "Professional suites" },
+      { value: "kitchen", label: "Restaurant renovation", hint: "Hospitality interiors" },
+      { value: "outdoor", label: "White boxing / turnover", hint: "Lease-ready suite" },
+      { value: "addition", label: "Storage & warehouse", hint: "Industrial facilities" },
+      { value: "bath", label: "Medical / professional", hint: "Clinical suites" },
     ],
   },
   {
@@ -52,10 +52,10 @@ const STEPS = [
     key: "area" as const,
     title: "Where is the property?",
     options: [
-      { value: "Miami Beach", label: "Miami Beach" },
-      { value: "Coral Gables", label: "Coral Gables" },
-      { value: "Brickell", label: "Brickell" },
+      { value: "Jupiter", label: "Jupiter" },
+      { value: "West Palm Beach", label: "West Palm Beach" },
       { value: "Fort Lauderdale", label: "Fort Lauderdale" },
+      { value: "Boca Raton", label: "Boca Raton" },
       { value: "Other South Florida", label: "Other South Florida" },
     ],
   },
@@ -120,7 +120,7 @@ export function QuoteQuiz() {
     const timelineLabel =
       STEPS[1].options.find((o) => o.value === answers.timeline)?.label ??
       answers.timeline;
-    const message = `Quote quiz lead. Timeline: ${timelineLabel}. Area: ${answers.area}.`;
+    const message = `Commercial bid request. Timeline: ${timelineLabel}. Area: ${answers.area}.`;
 
     try {
       const res = await fetch("/api/contact", {
@@ -181,13 +181,13 @@ export function QuoteQuiz() {
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-                    Instant quote path
+                    Request a Bid
                   </p>
                   <h2
                     id="quiz-title"
                     className="mt-1 font-display text-2xl text-[var(--color-cream)]"
                   >
-                    60-second project quiz
+                    Commercial project details
                   </h2>
                 </div>
                 <button
@@ -266,7 +266,7 @@ export function QuoteQuiz() {
               ) : (
                 <form onSubmit={submitContact} className="space-y-4">
                   <h3 className="font-display text-xl text-[var(--color-cream)] sm:text-2xl">
-                    Where should we send your estimate?
+                    Where should we send your bid follow-up?
                   </h3>
                   <label className="block space-y-1.5">
                     <span className="text-xs uppercase tracking-wide text-[var(--color-cream)]/55">
@@ -329,7 +329,7 @@ export function QuoteQuiz() {
                     >
                       {status === "loading"
                         ? "Sending…"
-                        : "Get my free estimate"}
+                        : "Request a Bid"}
                     </button>
                   </div>
                 </form>

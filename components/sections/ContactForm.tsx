@@ -25,7 +25,7 @@ type ContactFormProps = {
 
 export function ContactForm({
   source = "contact",
-  submitLabel = "Send my project details",
+  submitLabel = "Request a Bid",
 }: ContactFormProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
@@ -40,22 +40,36 @@ export function ContactForm({
     const form = event.currentTarget;
     const data = new FormData(form);
     const raw = Object.fromEntries(data.entries()) as Record<string, string>;
-    const payload: Record<string, string> = {};
-    for (const [key, value] of Object.entries(raw)) {
-      if (value.trim() === "" && key !== "message") continue;
-      payload[key] = value;
-    }
+
+    const extras = [
+      raw.companyName ? `Company: ${raw.companyName}` : null,
+      raw.projectAddress ? `Project address: ${raw.projectAddress}` : null,
+      raw.squareFootage ? `Approx. SF: ${raw.squareFootage}` : null,
+      raw.startDate ? `Anticipated start: ${raw.startDate}` : null,
+      raw.plansNote ? `Plans/photos note: ${raw.plansNote}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const message = [raw.message?.trim(), extras].filter(Boolean).join("\n\n");
+
+    const payload: Record<string, string> = {
+      name: raw.name,
+      phone: raw.phone,
+      email: raw.email,
+      message,
+      source,
+    };
+    if (raw.projectType) payload.projectType = raw.projectType;
+    if (raw.area) payload.area = raw.area;
+    if (raw.budgetRange) payload.budgetRange = raw.budgetRange;
+    if (typeof window !== "undefined") payload.pageUrl = window.location.href;
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...payload,
-          pageUrl:
-            typeof window !== "undefined" ? window.location.href : undefined,
-          source,
-        }),
+        body: JSON.stringify(payload),
       });
 
       const json = (await res.json()) as { ok?: boolean; error?: string };
@@ -82,18 +96,18 @@ export function ContactForm({
     return (
       <div className="rounded-[1.75rem] border border-[var(--color-orange)]/35 bg-[var(--color-orange)]/10 px-6 py-10 text-center sm:px-8">
         <p className="font-display text-3xl text-[var(--color-cream)]">
-          You’re on our list
+          Bid request received
         </p>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[var(--color-cream)]/75">
-          Thanks — we received your request and will reply within one business
-          day with a clear next step.
+          Thanks — we received your commercial project details and will reply within
+          one business day with a clear next step.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
           className="btn-ghost mt-6 touch-manipulation"
         >
-          Send another message
+          Send another request
         </button>
       </div>
     );
@@ -114,7 +128,7 @@ export function ContactForm({
 
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="flex flex-col gap-2">
-          <span className={labelClass}>Name</span>
+          <span className={labelClass}>Contact name</span>
           <input
             name="name"
             required
@@ -125,33 +139,53 @@ export function ContactForm({
           />
         </label>
         <label className="flex flex-col gap-2">
+          <span className={labelClass}>Company name</span>
+          <input
+            name="companyName"
+            autoComplete="organization"
+            placeholder="Business or property company"
+            className={inputClass}
+          />
+        </label>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <label className="flex flex-col gap-2">
           <span className={labelClass}>Phone</span>
           <input
             name="phone"
             required
             minLength={7}
             autoComplete="tel"
-            placeholder="(305) 555-0100"
+            placeholder="(312) 483-6046"
+            className={inputClass}
+          />
+        </label>
+        <label className="flex flex-col gap-2">
+          <span className={labelClass}>Email</span>
+          <input
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="you@company.com"
             className={inputClass}
           />
         </label>
       </div>
 
       <label className="flex flex-col gap-2">
-        <span className={labelClass}>Email</span>
+        <span className={labelClass}>Project address</span>
         <input
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          placeholder="you@email.com"
+          name="projectAddress"
+          placeholder="Street, city, FL"
           className={inputClass}
         />
       </label>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="flex flex-col gap-2">
-          <span className={labelClass}>Project type</span>
+          <span className={labelClass}>Type of commercial property</span>
           <select name="projectType" className={inputClass} defaultValue="">
             <option value="">Select (optional)</option>
             {PROJECT_TYPE_FILTER_OPTIONS.map((option) => (
@@ -162,13 +196,28 @@ export function ContactForm({
           </select>
         </label>
         <label className="flex flex-col gap-2">
-          <span className={labelClass}>Area / neighborhood</span>
+          <span className={labelClass}>Service area / city</span>
           <input
             name="area"
             maxLength={80}
-            placeholder="e.g. Coral Gables"
+            placeholder="e.g. West Palm Beach"
             className={inputClass}
           />
+        </label>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <label className="flex flex-col gap-2">
+          <span className={labelClass}>Approx. square footage</span>
+          <input
+            name="squareFootage"
+            placeholder="e.g. 3,200"
+            className={inputClass}
+          />
+        </label>
+        <label className="flex flex-col gap-2">
+          <span className={labelClass}>Anticipated start date</span>
+          <input name="startDate" placeholder="Month / year" className={inputClass} />
         </label>
       </div>
 
@@ -185,14 +234,23 @@ export function ContactForm({
       </label>
 
       <label className="flex flex-col gap-2">
-        <span className={labelClass}>Project details</span>
+        <span className={labelClass}>Description of work</span>
         <textarea
           name="message"
           required
           minLength={5}
           rows={5}
-          placeholder="Tell us about the home, timeline, and what you want to feel when it’s done…"
+          placeholder="Describe the commercial space, scope, and goals…"
           className={`${inputClass} min-h-[8.5rem] resize-y`}
+        />
+      </label>
+
+      <label className="flex flex-col gap-2">
+        <span className={labelClass}>Plans, drawings, or photos</span>
+        <input
+          name="plansNote"
+          placeholder="Link to plans/photos, or note that you will email files"
+          className={inputClass}
         />
       </label>
 

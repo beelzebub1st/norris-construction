@@ -80,7 +80,7 @@ ${leadField("Page", lead.pageUrl ?? undefined)}
       return {
         subject: "We would love to hear from you",
         html: `<p>Hi ${name},</p>
-<p>It has been a few days since you reached out. When you are ready, we can walk through timelines, budget ranges, and how we approach Miami-area projects.</p>
+<p>It has been a few days since you reached out. When you are ready, we can walk through timelines, budget ranges, and how we approach South Florida commercial projects.</p>
 <p>Email <a href="mailto:${escapeHtml(ctx.siteEmail)}">${escapeHtml(ctx.siteEmail)}</a> whenever it works for you.</p>`,
       };
     case "status_update": {

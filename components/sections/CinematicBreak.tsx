@@ -42,7 +42,7 @@ export function CinematicBreak() {
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
           Custom homes and high-end remodels with the same supervision, documentation, and
-          finish discipline — from Coral Gables to Fort Lauderdale.
+          finish discipline — from Jupiter to Fort Lauderdale.
         </p>
         <button type="button" onClick={openQuiz} className="btn-primary mt-8">
           Plan my project

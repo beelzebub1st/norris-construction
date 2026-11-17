@@ -20,7 +20,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                 Portfolio
               </p>
               <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-                Recent work across Miami & Broward
+                Recent commercial work across South Florida
               </h2>
               <p className="mt-3 text-[var(--color-cream)]/75">
                 Kitchens that cook hard, baths that hold waterproofing, outdoor rooms built for

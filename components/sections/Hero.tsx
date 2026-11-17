@@ -12,7 +12,7 @@ type HeroProps = {
 };
 
 const SUPPORTING =
-  "Custom homes and residential remodeling across Miami-Dade and Broward — clear scopes, accountable supervision, finishes built for South Florida weather.";
+  "Commercial only — office build-outs, restaurant renovations, tenant improvements, white boxing, and storage facilities for property owners, developers, and businesses across Palm Beach, Broward, and Martin Counties.";
 
 export function Hero({ headline, phone, sms }: HeroProps) {
   const { openQuiz, openContact } = useConversion();
@@ -27,7 +27,7 @@ export function Hero({ headline, phone, sms }: HeroProps) {
       >
         <Image
           src="/images/hero.jpg"
-          alt="Luxury South Florida residence by Norris Construction"
+          alt="Commercial white-box space by Norris Construction"
           fill
           priority
           className="object-cover"
@@ -58,7 +58,7 @@ export function Hero({ headline, phone, sms }: HeroProps) {
             priority
           />
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-orange)]">
-            Miami · Coral Gables · Brickell · Fort Lauderdale
+            Palm Beach · Broward · Martin County
           </p>
           <h1 className="max-w-4xl font-display text-[clamp(2.35rem,5.6vw,4.5rem)] leading-[0.95] text-[var(--color-cream)]">
             {headline}
@@ -68,10 +68,10 @@ export function Hero({ headline, phone, sms }: HeroProps) {
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <button type="button" onClick={openQuiz} className="btn-primary">
-              Start quote quiz
+              Request a Bid
             </button>
             <button type="button" onClick={openContact} className="btn-ghost">
-              Contact us
+              Contact
             </button>
             <a href={telHref(phone)} className="btn-ghost">
               Call now
@@ -80,9 +80,6 @@ export function Hero({ headline, phone, sms }: HeroProps) {
               Text
             </a>
           </div>
-          <p className="mt-5 text-xs text-[var(--color-cream)]/55">
-            Free estimate · Licensed & insured · Response within 1 business day
-          </p>
         </motion.div>
       </div>
     </section>

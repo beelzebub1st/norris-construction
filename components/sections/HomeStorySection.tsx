@@ -8,15 +8,15 @@ import { useConversion } from "@/components/conversion/ConversionProvider";
 const PILLARS = [
   {
     title: "Scope before dust",
-    body: "Drawings, allowances, and a written estimate land before demolition — so the build stays calm instead of improvisational.",
+    body: "Walkthroughs, written scopes, and clear bids land before demolition — so the build stays controlled instead of improvisational.",
   },
   {
     title: "One accountable lead",
     body: "A single project lead owns trades, updates, and walkthroughs. You are never ping-ponged between subcontractors.",
   },
   {
-    title: "Climate-smart craft",
-    body: "Humidity, storms, and coastal codes shape materials and assemblies — not just the Instagram finish layer.",
+    title: "Lease-ready execution",
+    body: "Schedules align to openings, renewals, and showings — with finishes built for commercial traffic and South Florida conditions.",
   },
 ];
 
@@ -29,15 +29,15 @@ export function HomeStorySection() {
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] sm:aspect-[5/6]">
             <Image
-              src="/images/projects/estate-1.jpg"
-              alt="Finished luxury interior by Norris Construction"
+              src="/images/projects/office.jpg"
+              alt="Commercial office build-out by Norris Construction"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
             <p className="absolute bottom-5 left-5 right-5 text-sm text-white/85">
-              Coral Gables estate remodel — kitchen, primary suite, and outdoor living in one sequenced build.
+              Jupiter office build-out — open plan, glass conference rooms, and professional finishes in one sequenced TI.
             </p>
           </div>
         </Reveal>
@@ -48,18 +48,18 @@ export function HomeStorySection() {
               How we work
             </p>
             <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-              Luxury that survives Miami — not just the photoshoot
+              Commercial spaces built for business
             </h2>
             <p className="mt-5 text-base leading-relaxed text-[var(--color-cream)]/78">
-              Norris Construction is a South Florida design-build team for homeowners who want
-              architecture-grade finishes without remodel chaos. We run custom homes, whole-home
-              renovations, kitchens, baths, additions, and outdoor living with the same standard:
-              clear paperwork, supervised trades, and details that still look sharp after a wet season.
+              Norris Construction is a commercial renovation and build-out contractor for South
+              Florida — offices, restaurants, retail, white boxing, storage facilities, and
+              warehouses. We do not build houses. Our clients are property owners, developers,
+              property managers, franchise operators, and business owners.
             </p>
             <p className="mt-4 text-base leading-relaxed text-[var(--color-cream)]/70">
-              Whether you are opening a Coral Gables kitchen, rebuilding a Brickell bath, or
-              starting a ground-up residence, you get one plan, one schedule rhythm, and one team
-              that answers the phone.
+              Whether you are preparing a vacant retail suite, modernizing an office, renovating a
+              restaurant, or upgrading a commercial facility, you get practical construction
+              solutions, quality workmanship, and dependable closeout.
             </p>
           </Reveal>
 
@@ -81,10 +81,10 @@ export function HomeStorySection() {
           <Reveal>
             <div className="mt-9 flex flex-wrap gap-3">
               <button type="button" onClick={openQuiz} className="btn-primary">
-                Start with a quote
+                Request a Bid
               </button>
               <Link href="/about" className="btn-ghost">
-                Our story
+                About Norris
               </Link>
             </div>
           </Reveal>

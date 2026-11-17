@@ -116,10 +116,10 @@ async function BlogPostContent({ slug }: { slug: string }) {
           </Reveal>
           <div className="mt-12 rounded-[1.5rem] border border-[var(--color-stone)]/20 bg-[var(--color-ink-soft)] p-6">
             <p className="font-display text-2xl text-[var(--color-cream)]">
-              Planning a project in Miami?
+              Planning a commercial project in South Florida?
             </p>
             <p className="mt-2 text-sm text-[var(--color-cream)]/70">
-              Get a clear next step — quiz, call, or message. We reply within one
+              Get a clear next step — bid request, call, or message. We reply within one
               business day.
             </p>
             <PageCtaButtons phone={settings.phone} className="mt-5" />

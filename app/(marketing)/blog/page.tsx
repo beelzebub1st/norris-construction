@@ -12,11 +12,11 @@ import { breadcrumbJsonLd } from "@/lib/seo/json-ld-data";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Miami Remodeling & Custom Home Guides",
+  title: "Commercial Construction Guides",
   description:
-    "Expert guides on Miami kitchen remodel costs, bathroom renovations, permits, Coral Gables remodels, outdoor kitchens, and hiring local contractors.",
+    "Expert guides on white-box construction, commercial tenant improvements, office build-outs, restaurant renovations, and warehouse work in South Florida.",
   path: "/blog",
-  image: "/images/services/kitchens.jpg",
+  image: "/images/services/whitebox.jpg",
 });
 
 async function listPostsWithSeo() {
@@ -60,11 +60,11 @@ export default async function BlogIndexPage() {
             Resources
           </p>
           <h1 className="mt-3 font-display text-4xl text-[var(--color-cream)] sm:text-5xl">
-            Miami remodeling & custom home guides
+            Commercial construction & renovation guides
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--color-cream)]/75">
-            Practical planning advice for South Florida homeowners — costs,
-            permits, timelines, and how to hire with confidence.
+            Practical planning advice for South Florida property owners and
+            managers — costs, permits, timelines, and how to hire with confidence.
           </p>
         </div>
       </section>

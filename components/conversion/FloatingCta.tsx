@@ -12,14 +12,14 @@ export function FloatingCta() {
         onClick={openQuiz}
         className="pointer-events-auto btn-primary relative pulse-dot shadow-xl"
       >
-        Quote quiz
+        Request a Bid
       </button>
       <button
         type="button"
         onClick={openContact}
         className="pointer-events-auto btn-ghost text-xs"
       >
-        Contact us
+        Contact
       </button>
     </div>
   );

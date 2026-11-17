@@ -17,9 +17,9 @@ import { getSiteSettings } from "@/lib/site-settings";
 export const metadata: Metadata = buildPageMetadata({
   title: "Projects",
   description:
-    "Featured remodels and custom homes across Miami Beach, Coral Gables, Brickell, and Fort Lauderdale.",
+    "Featured commercial renovations, office build-outs, restaurants, white boxing, and warehouse projects across Palm Beach, Broward, and Martin Counties.",
   path: "/projects",
-  image: "/images/projects/estate-1.jpg",
+  image: "/images/projects/office.jpg",
 });
 
 export const instant = false;
@@ -61,7 +61,7 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
             Work that converts skeptics into believers
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--color-cream)]/80">
-            Real kitchens, baths, estates, and outdoor rooms across South Florida —
+            Real offices, restaurants, white boxing, storage, and warehouse work across South Florida —
             filter by type or neighborhood.
           </p>
           <PageCtaButtons

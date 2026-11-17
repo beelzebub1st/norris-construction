@@ -14,9 +14,9 @@ type BlogTeaserProps = {
 };
 
 const COVER_FALLBACKS = [
-  "/images/services/kitchens.jpg",
-  "/images/services/bathrooms.jpg",
-  "/images/services/outdoor-living.jpg",
+  "/images/services/whitebox.jpg",
+  "/images/services/office.jpg",
+  "/images/services/restaurant.jpg",
 ];
 
 export function BlogTeaser({ posts }: BlogTeaserProps) {
@@ -35,7 +35,7 @@ export function BlogTeaser({ posts }: BlogTeaserProps) {
                 Plan smarter before you build
               </h2>
               <p className="mt-3 text-[var(--color-cream)]/75">
-                Cost ranges, permits, and hiring advice for Miami remodels — then book a
+                Cost ranges, permits, and hiring advice for South Florida commercial renovations — then book a
                 walkthrough when you are ready.
               </p>
             </div>

@@ -24,19 +24,19 @@ export function EstimateCta() {
               Next step
             </p>
             <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-              Ready when you are — estimate in under a minute
+              Ready when you are — request a commercial bid
             </h2>
             <p className="mt-4 text-[var(--color-cream)]/80">
-              Answer a few questions or send a quick message. We reply within
+              Answer a few questions or send project details. We reply within
               one business day with a clear next step — no vague ranges, no
               hard sell.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <button type="button" onClick={openQuiz} className="btn-primary">
-                Take the quote quiz
+                Request a Bid
               </button>
               <button type="button" onClick={openContact} className="btn-ghost">
-                Open contact form
+                Open bid form
               </button>
             </div>
           </div>

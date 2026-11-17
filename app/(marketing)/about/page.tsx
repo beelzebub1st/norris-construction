@@ -13,7 +13,7 @@ import { getSiteSettings } from "@/lib/site-settings";
 export const metadata: Metadata = buildPageMetadata({
   title: "About",
   description:
-    "Norris Construction — Miami luxury homes and remodeling with clear communication and craft-led execution.",
+    "Norris Construction — commercial renovations, tenant improvements, and build-outs across Palm Beach, Broward, and Martin Counties.",
   path: "/about",
   image: "/images/hero.jpg",
 });
@@ -21,44 +21,44 @@ export const metadata: Metadata = buildPageMetadata({
 const VALUES = [
   {
     title: "Clarity before chaos",
-    body: "Scope, allowances, and schedules are written before demolition — so the build feels calm.",
+    body: "Scope, schedules, and bids are written before demolition — so the build feels calm.",
   },
   {
     title: "One accountable lead",
     body: "You get a single project lead who owns trades, updates, and walkthroughs end to end.",
   },
   {
-    title: "Climate-smart craft",
-    body: "Humidity, storms, and coastal codes shape every material and assembly we specify.",
+    title: "Lease-ready discipline",
+    body: "We plan around openings, renewals, and showings — not just finish samples.",
   },
   {
-    title: "Finishes that photograph",
-    body: "Details are supervised like the last 10% matters most — because it does.",
+    title: "Finishes that hold up",
+    body: "Details are supervised for commercial traffic and South Florida conditions.",
   },
 ];
 
 const TIMELINE = [
   {
     year: "Origins",
-    body: "Hands-on remodeling across Miami-Dade and Broward — learning how South Florida homes actually live.",
+    body: "Hands-on commercial renovation work across South Florida — learning how offices, retail, and facilities actually operate.",
   },
   {
     year: "Growth",
-    body: "Expanded into custom homes, additions, and outdoor living with a trusted architecture and trades network.",
+    body: "Expanded into tenant improvements, white boxing, restaurants, medical suites, and warehouse renovations with trusted trades partners.",
   },
   {
     year: "Today",
-    body: "A design-build partner for homeowners who want luxury results without opaque process.",
+    body: "Commercial only — no residential homes. A renovation and build-out partner for property owners, managers, franchise operators, and businesses.",
   },
 ];
 
 const GALLERY = [
-  { src: "/images/hero.jpg", alt: "Norris Construction residence" },
-  { src: "/images/projects/estate-1.jpg", alt: "Interior craftsmanship" },
-  { src: "/images/projects/kitchen.jpg", alt: "Kitchen craftsmanship" },
-  { src: "/images/projects/outdoor.jpg", alt: "Outdoor living build" },
-  { src: "/images/services/custom-homes.jpg", alt: "Custom home exterior" },
-  { src: "/images/cta-band.jpg", alt: "Completed luxury home" },
+  { src: "/images/hero.jpg", alt: "White-box commercial suite" },
+  { src: "/images/projects/office.jpg", alt: "Office build-out" },
+  { src: "/images/projects/restaurant.jpg", alt: "Restaurant renovation" },
+  { src: "/images/projects/warehouse.jpg", alt: "Warehouse interior" },
+  { src: "/images/projects/storage.jpg", alt: "Self-storage renovation" },
+  { src: "/images/cta-band.jpg", alt: "Commercial facility interior" },
 ];
 
 export default async function AboutPage() {
@@ -87,11 +87,12 @@ export default async function AboutPage() {
             About Norris
           </p>
           <h1 className="mt-3 max-w-3xl font-display text-4xl text-[var(--color-cream)] sm:text-6xl">
-            Built for Miami. Accountable everywhere it counts.
+            Building better commercial spaces across South Florida.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-[var(--color-cream)]/80 sm:text-lg">
-            Family-rooted construction for homeowners who expect precision,
-            transparency, and work that lasts through South Florida seasons.
+            Strictly commercial — renovations, tenant improvements, and facility
+            conversions for property owners, developers, managers, and businesses.
+            We do not build houses.
           </p>
           <PageCtaButtons phone={settings.phone} className="mt-8" />
         </div>
@@ -114,21 +115,23 @@ export default async function AboutPage() {
             </h2>
             <div className="mt-6 space-y-4 text-[var(--color-cream)]/80 leading-relaxed">
               <p>
-                Norris Construction grew out of decades of hands-on remodeling and
-                custom home work across Miami-Dade and Broward. We coordinate
-                architects, engineers, and trades under one accountable team — so
-                your project stays on schedule and on brand.
+                Norris Construction Corp is focused exclusively on commercial work —
+                renovations, interior build-outs, tenant improvements, and property
+                turnovers throughout Palm Beach, Broward, and Martin Counties. We
+                do not build houses. As a commercial general contractor, we pull
+                permits and coordinate trades under one accountable team so projects
+                stay on schedule and lease-ready.
               </p>
               <p>
-                Every engagement starts with listening: how you live, entertain,
-                and maintain your property in South Florida&apos;s climate. From
-                there we align scope, finishes, and phasing before we break
-                ground.
+                Every engagement starts with listening: how the space needs to
+                operate, lease, and serve customers or tenants. From there we
+                align scope, finishes, and phasing before demolition begins.
               </p>
               <p>
-                Today we deliver custom homes, renovations, kitchens, baths,
-                additions, and outdoor living with the same standard — clear
-                estimates, dedicated supervision, and finishes that photograph.
+                Today we deliver office build-outs, restaurant renovations, retail
+                TI, white boxing, storage and warehouse work, and property
+                management renovations with the same standard — clear bids,
+                dedicated supervision, and dependable results.
               </p>
             </div>
           </Reveal>

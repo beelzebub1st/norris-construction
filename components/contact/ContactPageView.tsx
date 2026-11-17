@@ -45,7 +45,7 @@ const STEPS = [
   {
     n: "01",
     title: "You share the brief",
-    body: "Form, quiz, call, or text — whatever is easiest.",
+    body: "Form, bid quiz, call, or text — whatever is easiest.",
   },
   {
     n: "02",
@@ -55,15 +55,15 @@ const STEPS = [
   {
     n: "03",
     title: "Walkthrough & numbers",
-    body: "Site visit when needed, then a transparent estimate path.",
+    body: "Site visit when needed, then a transparent bid path.",
   },
 ];
 
 const AREAS = [
-  { href: "/areas/miami-beach", label: "Miami Beach" },
-  { href: "/areas/coral-gables", label: "Coral Gables" },
-  { href: "/areas/brickell", label: "Brickell" },
+  { href: "/areas/jupiter", label: "Jupiter" },
+  { href: "/areas/west-palm-beach", label: "West Palm Beach" },
   { href: "/areas/fort-lauderdale", label: "Fort Lauderdale" },
+  { href: "/areas/boca-raton", label: "Boca Raton" },
 ] as const;
 
 const FAQS = [
@@ -73,11 +73,11 @@ const FAQS = [
   },
   {
     q: "Do I need drawings first?",
-    a: "No. A few photos and a description of how you live is enough to start. We’ll tell you when drawings help.",
+    a: "No. Photos and a description of the commercial space are enough to start. Upload plans when you have them — we’ll tell you when drawings help.",
   },
   {
-    q: "Is the estimate free?",
-    a: "The initial consultation and directional estimate path are free. Detailed proposals follow a scoped walkthrough.",
+    q: "Is the bid consultation free?",
+    a: "The initial consultation and directional bid path are free. Detailed proposals follow a scoped walkthrough.",
   },
 ];
 
@@ -127,8 +127,8 @@ export function ContactPageView(props: ContactPageViewProps) {
               Let’s build the brief together
             </h1>
             <p className="mt-5 max-w-xl text-base text-[var(--color-cream)]/85 sm:text-lg">
-              Tell us about the home. We reply within one business day with a
-              clear path — quiz, call, or form, your call.
+              Tell us about the commercial project. We reply within one business day with a
+              clear path — bid request, call, or form, your call.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#contact-form" className="btn-primary touch-manipulation">
@@ -139,7 +139,7 @@ export function ContactPageView(props: ContactPageViewProps) {
                 onClick={openQuiz}
                 className="btn-ghost touch-manipulation"
               >
-                Take the quote quiz
+                Request a Bid
               </button>
               <a href={telHref(phone)} className="btn-ghost touch-manipulation">
                 Call now
@@ -156,7 +156,7 @@ export function ContactPageView(props: ContactPageViewProps) {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-cream)]/60 sm:px-6">
           <span className="text-[var(--color-orange)]">Trusted process</span>
           <span>Licensed & insured</span>
-          <span>Miami-Dade & Broward</span>
+          <span>Palm Beach · Broward · Martin</span>
           <span>No hard sell</span>
         </div>
       </section>
@@ -231,7 +231,7 @@ export function ContactPageView(props: ContactPageViewProps) {
                     onClick={openQuiz}
                     className="font-semibold text-[var(--color-orange)] underline-offset-2 hover:underline"
                   >
-                    Take the 60-second quote quiz
+                    Request a Bid
                   </button>
                 </p>
               </div>
@@ -309,7 +309,7 @@ export function ContactPageView(props: ContactPageViewProps) {
 
       <section className="relative overflow-hidden border-b border-[var(--color-stone)]/15">
         <Image
-          src="/images/services/custom-homes.jpg"
+          src="/images/services/office.jpg"
           alt=""
           fill
           className="object-cover"
@@ -322,10 +322,10 @@ export function ContactPageView(props: ContactPageViewProps) {
               Service areas
             </p>
             <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-4xl">
-              We build across Miami & South Florida
+              We build across South Florida commercial markets
             </h2>
             <p className="mt-4 max-w-lg text-[var(--color-cream)]/70">
-              Local permitting know-how from the coast to Coral Gables — one
+              Local permitting know-how from Jupiter to Fort Lauderdale — one
               finish standard everywhere we work.
             </p>
           </Reveal>

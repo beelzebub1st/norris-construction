@@ -14,18 +14,18 @@ const exploreLinks = [
 ] as const;
 
 const areaLinks = [
-  { href: "/areas/miami-beach", label: "Miami Beach" },
-  { href: "/areas/coral-gables", label: "Coral Gables" },
-  { href: "/areas/brickell", label: "Brickell" },
+  { href: "/areas/jupiter", label: "Jupiter" },
+  { href: "/areas/west-palm-beach", label: "West Palm Beach" },
   { href: "/areas/fort-lauderdale", label: "Fort Lauderdale" },
+  { href: "/areas/boca-raton", label: "Boca Raton" },
 ] as const;
 
 const serviceLinks = [
-  { href: "/services/custom-homes", label: "Custom Homes" },
-  { href: "/services/renovations", label: "Renovations" },
-  { href: "/services/kitchens", label: "Kitchens" },
-  { href: "/services/bathrooms", label: "Bathrooms" },
-  { href: "/services/outdoor-living", label: "Outdoor Living" },
+  { href: "/services/commercial-renovations", label: "Commercial Renovations" },
+  { href: "/services/office-buildouts", label: "Office Build-Outs" },
+  { href: "/services/restaurant-renovations", label: "Restaurant Renovations" },
+  { href: "/services/white-boxing", label: "White Boxing" },
+  { href: "/services/storage-warehouse", label: "Storage & Warehouse" },
 ] as const;
 
 type FooterProps = {
@@ -63,8 +63,9 @@ export function Footer({
               className="h-14 w-auto sm:h-16"
             />
             <p className="mt-5 text-sm leading-relaxed text-[var(--color-cream)]/70">
-              Luxury custom homes and remodeling across Miami and South Florida —
-              clear estimates, accountable supervision, finishes that photograph.
+              Commercial renovations, tenant improvements, and build-outs across
+              Palm Beach, Broward, and Martin Counties — clear bids, accountable
+              supervision, dependable closeout.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -73,14 +74,14 @@ export function Footer({
               onClick={openQuiz}
               className="btn-primary touch-manipulation"
             >
-              Start quote quiz
+              Request a Bid
             </button>
             <button
               type="button"
               onClick={openContact}
               className="btn-ghost touch-manipulation"
             >
-              Contact us
+              Contact
             </button>
           </div>
         </div>
@@ -169,8 +170,8 @@ export function Footer({
         </div>
 
         <div className="flex flex-col gap-3 border-t border-[var(--color-stone)]/15 py-6 text-xs text-[var(--color-cream)]/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>© Norris Construction. All rights reserved.</p>
-          <p>Miami-Dade · Broward · South Florida</p>
+          <p>© Norris Construction Corp. All rights reserved.</p>
+          <p>Palm Beach · Broward · Martin County</p>
         </div>
       </div>
     </footer>

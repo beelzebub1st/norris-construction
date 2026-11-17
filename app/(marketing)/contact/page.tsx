@@ -9,9 +9,9 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { getSiteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Contact",
+  title: "Request a Bid",
   description:
-    "Request a free estimate for your Miami remodel or custom home. Call, text, email, or send project details — we reply within one business day.",
+    "Request a commercial construction bid for renovations, tenant improvements, white boxing, or facility upgrades. We reply within one business day.",
   path: "/contact",
 });
 

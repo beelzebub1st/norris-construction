@@ -8,7 +8,7 @@ const navLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact", label: "Request a Bid" },
 ] as const;
 
 export function MobileNav() {

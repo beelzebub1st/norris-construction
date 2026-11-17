@@ -7,28 +7,28 @@ import { useConversion } from "@/components/conversion/ConversionProvider";
 
 const FITS = [
   {
-    title: "Kitchen remodels",
-    body: "Layouts that cook and entertain — durable finishes for Miami humidity.",
-    image: "/images/services/kitchens.jpg",
-    href: "/services/kitchens",
+    title: "White boxing & turnovers",
+    body: "Lease-ready suites for landlords, leasing agents, and property managers.",
+    image: "/images/services/whitebox.jpg",
+    href: "/services/white-boxing",
   },
   {
-    title: "Primary baths",
-    body: "Spa-level suites with waterproofing and ventilation done right.",
-    image: "/images/services/bathrooms.jpg",
-    href: "/services/bathrooms",
+    title: "Office build-outs",
+    body: "Corporate, medical, and professional suites with practical layouts and finishes.",
+    image: "/images/services/office.jpg",
+    href: "/services/office-buildouts",
   },
   {
-    title: "Outdoor living",
-    body: "Summer kitchens, lounges, and poolside spaces for year-round use.",
-    image: "/images/services/outdoor-living.jpg",
-    href: "/services/outdoor-living",
+    title: "Restaurant renovations",
+    body: "Dining rooms, bars, and hospitality interiors built for opening dates.",
+    image: "/images/services/restaurant.jpg",
+    href: "/services/restaurant-renovations",
   },
   {
-    title: "Custom homes",
-    body: "Ground-up residences with one accountable team from concept to keys.",
-    image: "/images/services/custom-homes.jpg",
-    href: "/services/custom-homes",
+    title: "Storage & warehouse",
+    body: "Self-storage corridors, warehouse interiors, and industrial facility upgrades.",
+    image: "/images/services/storage.jpg",
+    href: "/services/storage-warehouse",
   },
 ];
 
@@ -42,13 +42,13 @@ export function IdealFitSection() {
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-                Popular starts
+                Industries we serve
               </p>
               <h2 className="mt-3 font-display text-3xl text-[var(--color-cream)] sm:text-5xl">
-                What Miami homeowners ask for most
+                Commercial spaces we renovate most
               </h2>
               <p className="mt-3 max-w-xl text-[var(--color-cream)]/70">
-                Pick a starting point — or jump straight into the quote quiz.
+                Pick a starting point — or jump straight into a bid request.
               </p>
             </div>
             <button
@@ -56,7 +56,7 @@ export function IdealFitSection() {
               onClick={openQuiz}
               className="btn-primary w-fit touch-manipulation"
             >
-              Match me to a scope
+              Request a Bid
             </button>
           </div>
         </Reveal>
@@ -79,9 +79,6 @@ export function IdealFitSection() {
                 <div className="relative z-10 flex flex-col justify-end p-5 sm:p-6">
                   <h3 className="font-display text-2xl text-white">{item.title}</h3>
                   <p className="mt-2 max-w-sm text-sm text-white/75">{item.body}</p>
-                  <span className="mt-4 text-sm font-semibold text-[var(--color-orange)]">
-                    Explore →
-                  </span>
                 </div>
               </Link>
             </Reveal>

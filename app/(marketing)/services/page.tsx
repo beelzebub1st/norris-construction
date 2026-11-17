@@ -13,11 +13,11 @@ import { getSiteSettings } from "@/lib/site-settings";
 import { getServiceExtra } from "@/lib/service-extras";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Services",
+  title: "Commercial Services",
   description:
-    "Custom homes, renovations, kitchens, baths, additions, and outdoor living across South Florida.",
+    "Commercial renovations, office build-outs, restaurant renovations, white boxing, tenant improvements, and warehouse renovations across South Florida.",
   path: "/services",
-  image: "/images/services/custom-homes.jpg",
+  image: "/images/services/warehouse.jpg",
 });
 
 export default async function ServicesPage() {
@@ -45,7 +45,7 @@ export default async function ServicesPage() {
       />
       <section className="relative min-h-[min(58vh,520px)] overflow-hidden border-b border-[var(--color-stone)]/15">
         <SafeImage
-          src="/images/services/custom-homes.jpg"
+          src="/images/services/warehouse.jpg"
           alt=""
           fill
           priority
@@ -55,14 +55,14 @@ export default async function ServicesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)] via-[var(--color-ink)]/70 to-black/35" />
         <div className="relative z-10 mx-auto flex min-h-[min(58vh,520px)] max-w-6xl flex-col justify-end px-4 pb-12 pt-28 sm:px-6 sm:pb-16">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-orange)]">
-            Services
+            Commercial Services
           </p>
           <h1 className="mt-3 max-w-3xl font-display text-4xl text-[var(--color-cream)] sm:text-6xl">
-            Everything your home needs — one accountable team
+            Everything your commercial space needs — one accountable team
           </h1>
           <p className="mt-4 max-w-2xl text-[var(--color-cream)]/80">
-            Full-service residential construction for discerning homeowners across
-            Miami-Dade and Broward.
+            Commercial renovations, tenant improvements, and facility conversions
+            for property owners and businesses across Palm Beach, Broward, and Martin Counties.
           </p>
           <PageCtaButtons phone={settings.phone} className="mt-8" />
         </div>

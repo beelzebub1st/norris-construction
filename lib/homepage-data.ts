@@ -18,7 +18,7 @@ import { getPrisma } from "@/lib/prisma";
 import { getSiteSettings } from "@/lib/site-settings";
 
 export const DEFAULT_HEADLINE =
-  "Build the Miami home people stop to photograph.";
+  "Commercial Construction & Renovations in South Florida";
 
 export async function getHomepageData(visitorId?: string | null) {
   "use cache";
