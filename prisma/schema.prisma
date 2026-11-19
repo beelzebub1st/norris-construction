@@ -3,8 +3,11 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  // Pooled URL for app runtime (Vercel / serverless)
+  url       = env("DATABASE_URL")
+  // Direct URL for Prisma migrations / introspection
+  directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
 enum ProjectType {
