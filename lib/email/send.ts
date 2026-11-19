@@ -106,7 +106,14 @@ async function sendTemplatedEmail(
 export async function sendLeadEmails(lead: Lead): Promise<void> {
   const siteEmail = await getSiteEmail();
   const notifyTo = getLeadNotifyEmail();
-  await sendTemplatedEmail(lead, "lead_confirmation", lead.email, siteEmail);
+  const from = getResendFromAddress();
+  // Resend onboarding sender can only email the account owner (Gmail).
+  // Skip visitor confirmations until norrisconstruction.co is verified.
+  const onboardingOnly = /@resend\.dev/i.test(from);
+
+  if (!onboardingOnly) {
+    await sendTemplatedEmail(lead, "lead_confirmation", lead.email, siteEmail);
+  }
   if (notifyTo) {
     await sendTemplatedEmail(lead, "lead_notify", notifyTo, siteEmail);
   }

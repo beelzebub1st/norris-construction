@@ -9,7 +9,8 @@ export function getResendApiKey(): string | undefined {
 export function getResendFromAddress(): string {
   return (
     process.env.RESEND_FROM?.trim() ||
-    "Norris Construction Corp <Info@norrisconstruction.co>"
+    // Works without custom domain DNS: can only send to the Resend account email.
+    "Norris Construction <onboarding@resend.dev>"
   );
 }
 
