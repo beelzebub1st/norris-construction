@@ -21,6 +21,10 @@ function parseBeforeAfterField(raw: string): Prisma.InputJsonValue | typeof Pris
 
 function projectFromForm(formData: FormData) {
   const type = formString(formData, "type") as ProjectType;
+  let publishedAt = parseDatetimeLocal(formString(formData, "publishedAt"));
+  if (!publishedAt && formCheckbox(formData, "publishNow")) {
+    publishedAt = new Date();
+  }
   return {
     title: formString(formData, "title"),
     slug: formString(formData, "slug"),
@@ -33,7 +37,7 @@ function projectFromForm(formData: FormData) {
     featured: formCheckbox(formData, "featured"),
     seoTitle: formOptionalString(formData, "seoTitle"),
     seoDescription: formOptionalString(formData, "seoDescription"),
-    publishedAt: parseDatetimeLocal(formString(formData, "publishedAt")),
+    publishedAt,
   };
 }
 

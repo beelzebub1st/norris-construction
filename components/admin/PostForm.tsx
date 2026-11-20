@@ -5,6 +5,7 @@ import {
   SubmitButton,
   inputClass,
 } from "@/components/admin/admin-chrome";
+import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import {
   SeoDescriptionInput,
   SeoTitleInput,
@@ -26,9 +27,12 @@ export function PostForm({ action, post, submitLabel = "Save" }: PostFormProps) 
       <Field label="Slug">
         <input name="slug" required defaultValue={post?.slug ?? ""} className={inputClass} />
       </Field>
-      <Field label="Cover image URL">
-        <input name="cover" defaultValue={post?.cover ?? ""} className={inputClass} />
-      </Field>
+      <ImageUploadField
+        name="cover"
+        label="Cover image"
+        defaultValue={post?.cover ?? ""}
+        hint="Upload a cover photo or paste a URL."
+      />
       <Field label="Status">
         <select
           name="status"

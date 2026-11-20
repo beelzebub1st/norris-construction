@@ -5,6 +5,7 @@ import {
   SubmitButton,
   inputClass,
 } from "@/components/admin/admin-chrome";
+import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import {
   SeoDescriptionInput,
   SeoTitleInput,
@@ -41,9 +42,12 @@ export function ServiceForm({ action, service, submitLabel = "Save" }: ServiceFo
           className={inputClass}
         />
       </Field>
-      <Field label="Hero image URL">
-        <input name="heroImage" defaultValue={service?.heroImage ?? ""} className={inputClass} />
-      </Field>
+      <ImageUploadField
+        name="heroImage"
+        label="Hero image"
+        defaultValue={service?.heroImage ?? ""}
+        hint="Upload a photo or paste a URL. Shows at the top of the service page."
+      />
       <Field label="Summary">
         <textarea
           name="summary"

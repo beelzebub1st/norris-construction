@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
   },
   images: {
     unoptimized: process.env.VERCEL === "1",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
+      },
+    ],
   },
 };
 

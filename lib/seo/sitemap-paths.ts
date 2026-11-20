@@ -22,6 +22,8 @@ const STATIC_MARKETING_PATHS = [
   "/services",
   "/projects",
   "/blog",
+  "/llms.txt",
+  "/llms-full.txt",
 ] as const;
 
 export function buildSitemapPaths(data: SitemapSlugs): string[] {

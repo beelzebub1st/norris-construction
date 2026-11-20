@@ -9,9 +9,18 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
         disallow: ["/admin/", "/api/", "/_next/"],
       },
+      // Explicit allow for major AI crawlers / agents
+      { userAgent: "GPTBot", allow: "/" },
+      { userAgent: "ChatGPT-User", allow: "/" },
+      { userAgent: "OAI-SearchBot", allow: "/" },
+      { userAgent: "ClaudeBot", allow: "/" },
+      { userAgent: "Anthropic-AI", allow: "/" },
+      { userAgent: "PerplexityBot", allow: "/" },
+      { userAgent: "Google-Extended", allow: "/" },
+      { userAgent: "Applebot-Extended", allow: "/" },
     ],
     sitemap: `${base}/sitemap.xml`,
     host: base.replace(/^https?:\/\//, ""),
